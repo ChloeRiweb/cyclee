@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_130035) do
+ActiveRecord::Schema.define(version: 2020_08_25_153005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_130035) do
     t.string "destination_address"
     t.float "destination_latitude"
     t.float "destination_longitude"
-    t.boolean "bike_friendly"
+    t.boolean "bike_friendly", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
