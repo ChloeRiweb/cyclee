@@ -1,11 +1,11 @@
 class RidesController < ApplicationController
   def search
-    # @markers = @rides.map do |ride|
-    #   {
-    #     lat: ride.destination_latitude,
-    #     lng: ride.destination_longitude
-    #   }
-    # end
+    if params[:query].present?
+      results = Geocoder.search(params[:query])
+      # @ride = Ride.create(destination_address: params[:query])
+      @markers = [{ lat: results.first.coordinates.first, lng: results.first.coordinates.last }]
+      @ride = Ride.new
+    end
   end
 
   def create
