@@ -5,7 +5,10 @@
 </div>
 
 <% if params[:query].present? %>
-  <div class="d-flex justify-content-around buttons">
+  <div class="d-flex justify-content-around align-items-end buttons">
+    <div class="back btn btn-primary">
+      <%= link_to "retour", search_path  %>
+    </div>
     <div class="form">
       <%= simple_form_for(@ride) do |f| %>
         <%= f.input :origin_latitude, input_html: { value: 48.8649224}, as: :hidden %>
@@ -13,9 +16,6 @@
         <%= f.input :destination_address, input_html: { value: params[:query]}, as: :hidden %>
         <%= f.submit "ride", class: "btn btn-primary" %>
       <% end %>
-    </div>
-    <div class="back btn btn-primary">
-      <%= link_to "retour", search_path  %>
     </div>
   </div>
 
