@@ -6,7 +6,6 @@ class RidesController < ApplicationController
     #     lng: ride.destination_longitude
     #   }
     # end
-    @ride = Ride.new
   end
 
   def create
