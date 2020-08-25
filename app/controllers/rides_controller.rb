@@ -6,7 +6,21 @@ class RidesController < ApplicationController
       @markers = [{ lat: results.first.coordinates.first, lng: results.first.coordinates.last }]
       @ride = Ride.new
     end
+  end
 
-    # @markers = [{ lat: @ride.destination_latitude, lng: @ride.destination_longitude }]
+  def create
+    @ride = Ride.new(ride_params)
+    @ride.user = current_user
+    if @ride.save
+      redirect_to ride_path(@ride)
+    else
+      render :search
+    end
+  end
+
+  private
+
+  def ride_params
+    params.require(:ride).permit(:origin_latitude, :origin_longitude, :destination_address)
   end
 end
