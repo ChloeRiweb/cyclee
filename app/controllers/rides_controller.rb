@@ -1,3 +1,6 @@
+
+require 'json'
+
 class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update]
 
@@ -8,6 +11,7 @@ class RidesController < ApplicationController
       @markers = [{ lat: results.first.coordinates.first, lng: results.first.coordinates.last }]
       @ride = Ride.new
     end
+    set_parkings_spots
   end
 
   def create
@@ -29,6 +33,7 @@ class RidesController < ApplicationController
   end
 
   def show
+    set_parkings_spots
   end
 
   private
@@ -40,4 +45,33 @@ class RidesController < ApplicationController
   def set_ride
     @ride = Ride.find(params[:id])
   end
+
+  def set_parkings_spots
+    filepath = 'db/scrape/parkings_spots.json'
+    @parkings = JSON.parse(File.read(filepath))
+
+    @parkings_spots = @parkings.select do |element|
+      element['geometry']['coordinates'][1].between?(48.8155755, 48.902156) &&
+        element['geometry']['coordinates'][0].between?(2.224122, 2.4697602)
+    end
+    @parkings_spots = @parkings_spots.map do |element|
+      { lat: element['geometry']['coordinates'][1], lng: element['geometry']['coordinates'][0] }
+    end
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
