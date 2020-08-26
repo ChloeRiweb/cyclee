@@ -10,8 +10,6 @@ const fitMapToMarkers = (map, markers) => {
 
 const addMarker = async (map) => {
   const position = await getCurrentPosition();
-  fillRideForm(position.coords.longitude, position.coords.latitude)
-
   map.flyTo({
     center: [position.coords.longitude, position.coords.latitude]
   });
@@ -27,6 +25,7 @@ const addMarker = async (map) => {
 }
 
 const initMapbox = () => {
+
   const mapElement = document.getElementById('map');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
@@ -41,6 +40,8 @@ const initMapbox = () => {
     const markers = JSON.parse(mapElement.dataset.markers);
 
     if (markers) {
+      fillRideForm();
+      // Add markers (destination)
       markers.forEach((marker) => {
         new mapboxgl.Marker()
           .setLngLat([ marker.lng, marker.lat ])
@@ -49,25 +50,28 @@ const initMapbox = () => {
       fitMapToMarkers(map, markers);
       map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
                                         mapboxgl: mapboxgl }));
+    } else {
+      // Add user current location
+      addMarker(map)
+
+      map.on('load', () => {
+        const positionBtn = document.querySelector('.mapboxgl-ctrl-icon')
+        if (positionBtn) {
+          positionBtn.click();
+        }
+      })
     }
 
-    addMarker(map)
-
-    map.on('load', () => {
-      const positionBtn = document.querySelector('.mapboxgl-ctrl-icon')
-      if (positionBtn) {
-        positionBtn.click();
-      }
-    })
   }
 };
 
-const fillRideForm = (long, lat) => {
+const fillRideForm = async () => {
+  const position = await getCurrentPosition();
   const latInput = document.getElementById('ride_origin_latitude');
   const longInput = document.getElementById('ride_origin_longitude');
   if (latInput) {
-    latInput.value = lat;
-    longInput.value = long;
+    latInput.value = position.coords.latitude;
+    longInput.value = position.coords.longitude;
   }
 }
 
@@ -77,4 +81,4 @@ const getCurrentPosition = () => {
   });
 }
 
-export { initMapbox, getCurrentPosition };
+export { initMapbox };
