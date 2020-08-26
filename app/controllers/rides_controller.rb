@@ -34,7 +34,7 @@ class RidesController < ApplicationController
   private
 
   def ride_params
-    params.require(:ride).permit(:origin_latitude, :origin_longitude, :destination_address)
+    params.require(:ride).permit(:origin_latitude, :origin_longitude, :destination_address, :bike_friendly)
   end
 
   def set_ride
