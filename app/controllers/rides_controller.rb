@@ -18,6 +18,7 @@ class RidesController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   def edit
     @ride = Ride.find(params[:id])
   end
@@ -27,6 +28,12 @@ class RidesController < ApplicationController
     redirect_to ride_path(@ride)
   end
 
+=======
+  def show
+    @ride = Ride.find(params[:id])
+  end
+
+>>>>>>> master
   private
 
   def ride_params
