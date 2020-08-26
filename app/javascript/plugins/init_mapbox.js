@@ -77,4 +77,17 @@ const getCurrentPosition = () => {
   });
 }
 
+const addMarkersParkings = () => {
+  const parking_spot = document.
+    const parkings = JSON.parse(mapElement.dataset.markers);
+  parkings.forEach((parking) => {
+    new mapboxgl.Marker()
+      .setLngLat([
+        parking.lng,
+        parking.lat ])
+      .addTo(map);
+  })
+}
+
+
 export { initMapbox, getCurrentPosition };
