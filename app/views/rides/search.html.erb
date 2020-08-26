@@ -11,25 +11,20 @@
     </div>
     <div class="form">
       <%= simple_form_for(@ride) do |f| %>
-        <%= f.input :origin_latitude, input_html: { value: 48.8649224}, as: :hidden %>
-        <%= f.input :origin_longitude, input_html: { value: 2.3800903}, as: :hidden %>
         <%= f.input :destination_address, input_html: { value: params[:query]}, as: :hidden %>
         <%= f.submit "ride", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
-
-  <% else %>
-
-    <div class="bottom_nav">
-      <%= form_tag search_path, method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control", id: "search",
-        placeholder: "Où allez-vous ?"
-      %>
-        <%= submit_tag "Rechercher", class: "btn btn-secondary" %>
-      <% end %>
-    </div>
-
+<% else %>
+  <div class="bottom_nav">
+    <%= form_tag search_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control", id: "search",
+      placeholder: "Où allez-vous ?"
+    %>
+      <%= submit_tag "Rechercher", class: "btn btn-secondary" %>
+    <% end %>
+  </div>
 <% end %>
