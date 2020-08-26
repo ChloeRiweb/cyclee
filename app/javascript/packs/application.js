@@ -24,7 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import { initMapbox, getCurrentPosition } from '../plugins/init_mapbox';
+import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 
 // Internal imports, e.g:
