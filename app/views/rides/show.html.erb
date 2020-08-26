@@ -2,3 +2,11 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+
+
+<div>
+  <%= @parkings_spots.count %>
+  <%= @parkings_spots.first['geometry']['coordinates'][0] %>
+  <%= @parkings_spots.first['geometry']['coordinates'][1] %>
+
+  </div>
