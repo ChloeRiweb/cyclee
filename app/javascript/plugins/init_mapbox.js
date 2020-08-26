@@ -30,5 +30,24 @@ const initMapbox = () => {
   }
 };
 
+// je récupère la current position du navigateur :
+// 1/ fonction de rappel qui prend un objet Position comme argument.
+const success = (position) => {
+  const coords = position.coords;
+  console.log('Votre position actuelle est :');
+  console.log(`Latitude : ${coords.latitude}`);
+  console.log(`Longitude : ${coords.longitude}`);
+}
 
-export { initMapbox };
+// 2/ j'appelle la méthode getCurrentPosition
+const getCurrentPosition = () => {
+  navigator.geolocation.getCurrentPosition(success);
+};
+
+// 3/ j'insère les coordonnées dans les champs origin_lat & origin_long
+
+// 4/ ajouter le marqueur
+
+//
+
+export { initMapbox, getCurrentPosition };
