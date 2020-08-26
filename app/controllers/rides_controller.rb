@@ -1,4 +1,6 @@
 class RidesController < ApplicationController
+  before_action :set_ride, only: [:show, :edit, :update]
+
   def search
     if params[:query].present?
       results = Geocoder.search(params[:query])
@@ -12,14 +14,13 @@ class RidesController < ApplicationController
     @ride = Ride.new(ride_params)
     @ride.user = current_user
     if @ride.save
-      redirect_to ride_path(@ride)
+      redirect_to edit_ride_path(@ride)
     else
       render :search
     end
   end
 
   def edit
-    @ride = Ride.find(params[:id])
   end
 
   def update
@@ -28,12 +29,15 @@ class RidesController < ApplicationController
   end
 
   def show
-    @ride = Ride.find(params[:id])
   end
 
   private
 
   def ride_params
     params.require(:ride).permit(:origin_latitude, :origin_longitude, :destination_address)
+  end
+
+  def set_ride
+    @ride = Ride.find(params[:id])
   end
 end
