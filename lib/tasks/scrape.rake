@@ -29,4 +29,5 @@ namespace :scrape do
     File.open('db/scrape/reparateurs.yaml', "wb") { |out| out.puts results.to_yaml }
   end
 
+
 end
