@@ -27,6 +27,7 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initMapboxEdit } from '../plugins/init_mapbox_edit';
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initTimeOutHome } from '../plugins/init_timeouthome';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -37,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initMapboxEdit();
   initAutocomplete();
+  initTimeOutHome();
 });
