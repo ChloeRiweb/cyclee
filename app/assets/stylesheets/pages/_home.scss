@@ -1,1 +1,16 @@
 // Specific CSS for your home-page
+#pages-home {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.loading {
+  width: 280px;
+  height: 260px;
+  background-size: cover;
+  background-position: center;
+}
