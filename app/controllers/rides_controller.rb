@@ -30,13 +30,12 @@ class RidesController < ApplicationController
   end
 
   def show
-    raise
     set_parkings_spots
-    # if params[:bike_friendly] == true
-    #   @cycling_waypoints = get_waypoints(@ride, 'cycling')
-    # else
-    #   @cycling_waypoints_alt = get_waypoints_alt(@ride, 'cycling')
-    # end
+    if @ride.bike_friendly == true
+      @cycling_waypoints = get_waypoints_alt(@ride, 'cycling')
+    else
+      @cycling_waypoints = get_waypoints(@ride, 'cycling')
+    end
   end
 
   def edit
@@ -111,4 +110,3 @@ class RidesController < ApplicationController
     @bikes_shops = YAML.load_file(filepath)
   end
 end
-
