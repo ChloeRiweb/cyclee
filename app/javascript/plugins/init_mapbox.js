@@ -1,5 +1,7 @@
-import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import mapboxgl from 'mapbox-gl';
+// import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
@@ -7,6 +9,11 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
 };
 
+const getCurrentPosition = () => {
+  return new Promise(function(resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
 
 const addMarker = async (map) => {
   const position = await getCurrentPosition();
@@ -28,16 +35,19 @@ const initMapbox = () => {
 
   const mapElement = document.getElementById('map');
 
+
   if (mapElement) { // only build a map if there's a div#map to inject into
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
-      zoom: 10
+      center: [2.379717, 48.865433],
+      zoom: 12
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
+
 
     if (markers) {
       fillRideForm();
@@ -48,8 +58,8 @@ const initMapbox = () => {
           .addTo(map);
       });
       fitMapToMarkers(map, markers);
-      map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-                                        mapboxgl: mapboxgl }));
+      // map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+      //                                   mapboxgl: mapboxgl }));
     } else {
       // Add user current location
       addMarker(map)
@@ -61,7 +71,6 @@ const initMapbox = () => {
         }
       })
     }
-
   }
 };
 
@@ -74,13 +83,6 @@ const fillRideForm = async () => {
     longInput.value = position.coords.longitude;
   }
 }
-
-const getCurrentPosition = () => {
-  return new Promise(function(resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
-}
-
 // To use in show page
 // only around the destination point (radius 30m)
 const addMarkersParkings = (mapElement, map) => {
@@ -97,4 +99,3 @@ const addMarkersParkings = (mapElement, map) => {
 }
 
 export { initMapbox };
-
