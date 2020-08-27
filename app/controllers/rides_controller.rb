@@ -1,4 +1,5 @@
 require 'json'
+require 'yaml'
 
 class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update]
@@ -74,4 +75,15 @@ class RidesController < ApplicationController
       { lat: element[:lat], lng: element[:lng] }
     end
   end
+
+  def set_pumps_spots
+    filepath = 'db/scrape/pump.yaml'
+    @pumps = YAML.load_file(filepath)
+  end
+
+  def set_bikes_shops
+    filepath = 'db/scrape/reparateurs.yaml'
+    @bikes_shops = YAML.load_file(filepath)
+  end
 end
+
