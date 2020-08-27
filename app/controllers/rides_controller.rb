@@ -1,4 +1,3 @@
-
 require 'json'
 
 class RidesController < ApplicationController
@@ -24,9 +23,6 @@ class RidesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     @ride.update(ride_params)
     redirect_to ride_path(@ride)
@@ -49,12 +45,11 @@ class RidesController < ApplicationController
     data = Mapbox::Directions.directions([{
       "latitude" => ride.origin_latitude,
       "longitude" => ride.origin_longitude
-    },
-    {
+    }, {
       "latitude" => ride.destination_latitude,
       "longitude" => ride.destination_longitude
     }], mode, {
-        geometries: "geojson",
+      geometries: "geojson"
     })
     return data[0]['routes'][0]['geometry']['coordinates']
   end
@@ -79,21 +74,4 @@ class RidesController < ApplicationController
       { lat: element['geometry']['coordinates'][1], lng: element['geometry']['coordinates'][0] }
     end
   end
-
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
