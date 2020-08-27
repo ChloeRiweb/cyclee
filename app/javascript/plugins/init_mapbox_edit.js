@@ -15,7 +15,7 @@ const initMapboxEdit = () => {
     const map = new mapboxgl.Map({
       container: 'map_edit',
       style: 'mapbox://styles/mapbox/streets-v10',
-      center: cyclingWaypoints[0],
+      center: cyclingWaypoints[cyclingWaypoints.length / 2],
       zoom: 12
     });
 
