@@ -9,17 +9,17 @@
   <div class="blur-wrapper"></div>
   <div class="row no-gutters justify-content-center bg-transparent">
     <div class=".d-print-inline">
-    <div class="btn btn-cool">
-      <%= link_to "J'ai le temps", ride_path  %>
-    </div>
+      <div class="btn btn-cool">
+        <%= link_to "J'ai le temps", ride_path  %>
 
+        </div>
+        <div class="form-fast">
+          <%= simple_form_for(@ride) do |f| %>
+          <%= f.input :bike_friendly, input_html: { value: true }, as: :hidden %>
+          <%= f.submit "Je suis pressé.e", class: "btn btn-fast" %>
+          <% end %>
 
-      <div class="form-fast">
-        <%= simple_form_for(@ride) do |f| %>
-        <%= f.input :bike_friendly, input_html: { value: true }, as: :hidden %>
-        <%= f.submit "Je suis présse.é", class: "btn btn-fast" %>
-        <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
