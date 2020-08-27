@@ -1,19 +1,25 @@
 <div id="map_edit"
-  style="height: 500px; width: 100vw;"
+  style="height: 100vh; width: 100vw;"
   data-cycling-waypoints="<%= @cycling_waypoints.to_json %>"
   data-cycling-waypoints-alt="<%= @cycling_waypoints_alt.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
-<div class="d-flex justify-content-around align-items-end buttons">
-  <div class="back btn btn-primary">
-    <%= link_to "J'ai le temps", ride_path  %>
-  </div>
+<div class="container choice-ride">
+  <div class="blur-wrapper"></div>
+  <div class="row no-gutters justify-content-center bg-transparent">
+    <div class=".d-print-inline">
+    <div class="btn btn-cool">
+      <%= link_to "J'ai le temps", ride_path  %>
+    </div>
 
-  <div>
-    <%= simple_form_for(@ride) do |f| %>
-      <%= f.input :bike_friendly, input_html: { value: true }, as: :hidden %>
-      <%= f.submit "Je suis présse.é", class: "btn btn-primary" %>
-    <% end %>
+
+      <div class="form-fast">
+        <%= simple_form_for(@ride) do |f| %>
+        <%= f.input :bike_friendly, input_html: { value: true }, as: :hidden %>
+        <%= f.submit "Je suis présse.é", class: "btn btn-fast" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
