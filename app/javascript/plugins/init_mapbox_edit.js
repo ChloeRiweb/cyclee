@@ -9,7 +9,7 @@ const initMapboxEdit = () => {
   if (mapElement) { // only build a map if there's a div#map to inject into
 
     const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
-    const walkingWaypoints = JSON.parse(mapElement.dataset.walkingWaypoints);
+    const cyclingWaypointsAlt = JSON.parse(mapElement.dataset.cyclingWaypointsAlt);
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
@@ -40,31 +40,31 @@ const initMapboxEdit = () => {
           'line-cap': 'round'
         },
         paint: {
-          'line-color': '#1e61ac',
+          'line-color': '#193c60',
           'line-width': 4
         }
       });
-      map.addSource('walking', {
+      map.addSource('cycling_Alt', {
         type: 'geojson',
         data: {
           type: 'Feature',
           properties: {},
           geometry: {
             type: 'LineString',
-            coordinates: walkingWaypoints
+            coordinates: cyclingWaypointsAlt
           }
         }
       });
       map.addLayer({
-        id: 'walking',
+        id: 'cycling_Alt',
         type: 'line',
-        source: 'walking',
+        source: 'cycling_Alt',
         layout: {
           'line-join': 'round',
           'line-cap': 'round'
         },
         paint: {
-          'line-color': '#f36a6e',
+          'line-color': '#ef596e',
           'line-width': 4
         }
       });

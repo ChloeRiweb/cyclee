@@ -36,7 +36,7 @@ class RidesController < ApplicationController
   def edit
     @ride = Ride.find(params[:id])
     @cycling_waypoints = get_waypoints(@ride, 'cycling')
-    @walking_waypoints = get_waypoints(@ride, 'walking')
+    @cycling_waypoints_alt = get_waypoints_alt(@ride, 'cycling')
   end
 
   private
@@ -53,6 +53,25 @@ class RidesController < ApplicationController
       geometries: "geojson"
     })
     return data[0]['routes'][0]['geometry']['coordinates']
+  end
+
+  def get_waypoints_alt(ride, mode)
+    Mapbox.access_token = ENV['MAPBOX_API_KEY']
+    data = Mapbox::Directions.directions([{
+      "latitude" => ride.origin_latitude,
+      "longitude" => ride.origin_longitude
+    }, {
+      "latitude" => ride.destination_latitude,
+      "longitude" => ride.destination_longitude
+    }], mode, {
+      geometries: "geojson",
+      alternatives: true
+    })
+    if data[0]['routes'].count > 1
+      return data[0]['routes'][1]['geometry']['coordinates']
+    else
+      []
+    end
   end
 
   def ride_params
