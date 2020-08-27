@@ -35,7 +35,7 @@ class RidesController < ApplicationController
   def edit
     @ride = Ride.find(params[:id])
     @cycling_waypoints = get_waypoints(@ride, 'cycling')
-    @driving_waypoints = get_waypoints(@ride, 'driving')
+    @walking_waypoints = get_waypoints(@ride, 'walking')
   end
 
   private
