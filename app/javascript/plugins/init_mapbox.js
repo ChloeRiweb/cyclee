@@ -1,6 +1,17 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 
+const fitMapToMarkers = (map, markers) => {
+  const bounds = new mapboxgl.LngLatBounds();
+  markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+  map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+};
+
+const getCurrentPosition = () => {
+  return new Promise(function(resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
 
 const addMarker = async (map) => {
   const position = await getCurrentPosition();
@@ -22,8 +33,6 @@ const initMapbox = () => {
 
   const mapElement = document.getElementById('map');
 
-  const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
-  const drivingWaypoints = JSON.parse(mapElement.dataset.drivingWaypoints);
 
   if (mapElement) { // only build a map if there's a div#map to inject into
 
@@ -31,62 +40,12 @@ const initMapbox = () => {
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
-      center: cyclingWaypoints[0],
+      center: [2.379717, 48.865433],
       zoom: 12
     });
 
-    map.on('load', function() {
-      map.addSource('cycling', {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          properties: {},
-          geometry: {
-            type: 'LineString',
-            coordinates: cyclingWaypoints
-          }
-        }
-      });
-      map.addLayer({
-        id: 'cycling',
-        type: 'line',
-        source: 'cycling',
-        layout: {
-          'line-join': 'round',
-          'line-cap': 'round'
-        },
-        paint: {
-          'line-color': '#a2db60',
-          'line-width': 4
-        }
-      });
-      map.addSource('driving', {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          properties: {},
-          geometry: {
-            type: 'LineString',
-            coordinates: drivingWaypoints
-          }
-        }
-      });
-      map.addLayer({
-        id: 'driving',
-        type: 'line',
-        source: 'driving',
-        layout: {
-          'line-join': 'round',
-          'line-cap': 'round'
-        },
-        paint: {
-          'line-color': '#db8f60',
-          'line-width': 4
-        }
-      });
-    });
-
     const markers = JSON.parse(mapElement.dataset.markers);
+
 
     if (markers) {
       fillRideForm();
@@ -122,13 +81,6 @@ const fillRideForm = async () => {
     longInput.value = position.coords.longitude;
   }
 }
-
-const getCurrentPosition = () => {
-  return new Promise(function(resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
-}
-
 // To use in show page
 // only around the destination point (radius 30m)
 const addMarkersParkings = (mapElement, map) => {

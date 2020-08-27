@@ -71,7 +71,7 @@ class RidesController < ApplicationController
         element['geometry']['coordinates'][0].between?(2.224122, 2.4697602)
     end
     @parkings_spots = @parkings_spots.map do |element|
-      { lat: element['geometry']['coordinates'][1], lng: element['geometry']['coordinates'][0] }
+      { lat: element[:lat], lng: element[:lng] }
     end
   end
 end
