@@ -4,35 +4,36 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
+
 <% if params[:query].present? %>
-  <div class="blur-background bottom-menu">
-    <div class="d-flex justify-content-around align-items-end buttons bg-white">
-      <div class="back btn btn-primary">
-        <%= link_to "retour", search_path  %>
-      </div>
-      <div class="form">
-        <%= simple_form_for(@ride) do |f| %>
+  <div class="pb-3 px-3 bottom-menu">
+    <div class="p-2 d-flex flex-column align-items-center bd-highlight bg-white" style="border-radius: 3%">
+      <p class='text-address mb-0'>Vous avez cherché:</p>
+      <p class="mb-0 text-center font-weight-light"><%= params[:query] %></p>
+        <%= simple_form_for(@ride, html: {class: "mb-3"}) do |f| %>
           <%= f.input :origin_latitude, as: :hidden %>
           <%= f.input :origin_longitude, as: :hidden %>
           <%= f.input :destination_address, input_html: { value: params[:query]}, as: :hidden %>
-          <%= f.submit "ride", class: "btn btn-cool" %>
+          <%= f.submit "On y va !", class: "btn btn-cool" %>
         <% end %>
-      </div>
+      <%= link_to "Je fais une nouvelle recherche", search_path  %>
     </div>
   </div>
 <% else %>
-  <div class="blur-background bottom-menu">
-    <div class="blur-wrapper"></div>
-    <div class="row no-gutters">
+  <div class="d-flex flex-column bd-highlight mb-3">
+    <div class="blur-background bottom-menu">
+      <div class="blur-wrapper"></div>
+      <div class="row no-gutters">
 
-      <%= form_tag search_path, class: "search-form", method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control", id: "search",
-          placeholder: "Où allez-vous ?"
-        %>
-        <%= submit_tag "", class: "btn btn-secondary d-none" %>
-      <% end %>
+        <%= form_tag search_path, class: "search-form", method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control", id: "search",
+            placeholder: "Où allez-vous ?"
+          %>
+          <%= submit_tag "", class: "btn btn-secondary d-none" %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>

@@ -2,3 +2,25 @@
   text-decoration: none;
   color: white;
 }
+
+.btn-cool {
+  background-image: linear-gradient($cyclee_pink, $cyclee_orange);
+  color: $white;
+  text-decoration: none !important;
+  font-family: $poppins;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50px;
+  width: 200px;
+}
+
+.btn-cool:hover {
+  text-decoration: none !important;
+  color: $white !important;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
