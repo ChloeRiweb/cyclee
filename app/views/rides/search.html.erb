@@ -5,17 +5,19 @@
 </div>
 
 <% if params[:query].present? %>
-  <div class="d-flex justify-content-around align-items-end buttons bg-white">
-    <div class="back btn btn-primary">
-      <%= link_to "retour", search_path  %>
-    </div>
-    <div class="form">
-      <%= simple_form_for(@ride) do |f| %>
-        <%= f.input :origin_latitude, as: :hidden %>
-        <%= f.input :origin_longitude, as: :hidden %>
-        <%= f.input :destination_address, input_html: { value: params[:query]}, as: :hidden %>
-        <%= f.submit "ride", class: "btn btn-cool" %>
-      <% end %>
+  <div class="blur-background bottom-menu">
+    <div class="d-flex justify-content-around align-items-end buttons bg-white">
+      <div class="back btn btn-primary">
+        <%= link_to "retour", search_path  %>
+      </div>
+      <div class="form">
+        <%= simple_form_for(@ride) do |f| %>
+          <%= f.input :origin_latitude, as: :hidden %>
+          <%= f.input :origin_longitude, as: :hidden %>
+          <%= f.input :destination_address, input_html: { value: params[:query]}, as: :hidden %>
+          <%= f.submit "ride", class: "btn btn-cool" %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% else %>
