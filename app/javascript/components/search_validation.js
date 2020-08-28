@@ -1,15 +1,18 @@
 const searchValidation = () => {
-  const searchIcon = "<i class='fas fa-search'></i>";
-  const searchForm = document.querySelector("#rides-search .search-form");
-  const searchBtn = document.querySelector("#rides-search .search-form .btn-secondary");
+  if(document.querySelector("#rides-search .search-form")){
 
-  searchForm.insertAdjacentHTML("beforeend", searchIcon);
+    const searchIcon = "<i class='fas fa-search'></i>";
+    const searchForm = document.querySelector("#rides-search .search-form");
+    const searchBtn = document.querySelector("#rides-search .search-form .btn-secondary");
 
-  const searchIconValidation = document.querySelector(".fa-search");
+    searchForm.insertAdjacentHTML("beforeend", searchIcon);
 
-  searchIconValidation.addEventListener("click", (event) => {
-    searchBtn.click();
-  })
+    const searchIconValidation = document.querySelector(".fa-search");
+
+    searchIconValidation.addEventListener("click", (event) => {
+      searchBtn.click();
+    })
+  }
 }
 
 export { searchValidation };
