@@ -24,6 +24,12 @@ class RidesController < ApplicationController
     end
   end
 
+  def edit
+    @ride = Ride.find(params[:id])
+    @cycling_waypoints = get_waypoints(@ride, 'cycling')
+    @cycling_waypoints_alt = get_waypoints_alt(@ride, 'cycling')
+  end
+
   def update
     @ride.update(ride_params)
     redirect_to ride_path(@ride)
@@ -31,12 +37,11 @@ class RidesController < ApplicationController
 
   def show
     set_parkings_spots
-  end
-
-  def edit
-    @ride = Ride.find(params[:id])
-    @cycling_waypoints = get_waypoints(@ride, 'cycling')
-    @cycling_waypoints_alt = get_waypoints_alt(@ride, 'cycling')
+    if @ride.bike_friendly
+      @cycling_waypoints = get_waypoints_alt(@ride, 'cycling')
+    else
+      @cycling_waypoints = get_waypoints(@ride, 'cycling')
+    end
   end
 
   private
@@ -105,4 +110,3 @@ class RidesController < ApplicationController
     @bikes_shops = YAML.load_file(filepath)
   end
 end
-
