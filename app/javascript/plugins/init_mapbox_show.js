@@ -38,7 +38,7 @@ const initMapboxShow = () => {
           'line-cap': 'round'
         },
         paint: {
-          'line-color': '#183B60',
+          'line-color': '#ef596e',
           'line-width': 4
         }
       });
