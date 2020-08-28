@@ -28,9 +28,10 @@
 
 }
 
-.blur-background {
+.bottom-menu {
   position: fixed;
   bottom: 0;
+  width: 100%;
   .row {
     position: absolute;
     bottom: 0;
@@ -40,16 +41,71 @@
   }
 }
 
-.blur-wrapper {
-    position: absolute;
-    bottom: 0;
-    background: $cyclee_blue_light;
-    z-index: 1;
-    width: 100vw;
-    height: 120px;
-    left: 0;
-    filter: blur(10px);
+.blur-background {
+  .blur-wrapper {
+      position: absolute;
+      bottom: 0;
+      background: #CBDEF6;
+      z-index: 1;
+      width: 100vw;
+      height: 120px;
+      left: 0;
+      filter: blur(10px);
+  }
 }
 
+#rides-search {
+  .blur-background {
+    form {
+      width: 80%;
+      position: relative;
+      margin: 30px auto;
+      .fa-search {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        z-index: 1;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $cyclee_pink;
+        border-left: 1px solid #EE596D;
+        padding-left: 20px;
+        box-shadow: -10px 0px 6px $cyclee_blue_light;
+      }
+      input#search {
+        background-color: $cyclee_blue_light;
+        height: 56px;
+        border-radius: 30px;
+        border: none;
+        color: $cyclee_pink;
+        padding-right: 50px;
+        &::placeholder {
+          color: $cyclee_pink;
+        }
+      }
+    }
+  }
+  // algolia pimpage
+  button.ap-input-icon.ap-icon-pin {
+    display: none;
+  }
 
+  span#algolia-places-listbox-0 {
+    top: auto !important;
+    bottom: 100% !important;
+    background: #e0edfb;
+    border-radius: 6px;
+    .ap-cursor {
+      background: #cbdef6;
+    }
+    .ap-footer {
+      display: none;
+    }
+  }
+}
 
