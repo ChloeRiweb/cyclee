@@ -4,6 +4,7 @@ import mapboxgl from 'mapbox-gl';
 const initMapboxEdit = () => {
 
   const mapElement = document.getElementById('map_edit');
+  console.log(mapElement)
 
 
   if (mapElement) { // only build a map if there's a div#map to inject into
@@ -15,7 +16,7 @@ const initMapboxEdit = () => {
     const map = new mapboxgl.Map({
       container: 'map_edit',
       style: 'mapbox://styles/chloeri/ckecwoto80ikm19p5q5qk4yf9',
-      center: cyclingWaypoints[0],
+      center: cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)],
       zoom: 12
     });
 
