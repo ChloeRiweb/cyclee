@@ -5,7 +5,7 @@
 </div>
 
 <% if params[:query].present? %>
-  <div class="d-flex justify-content-around align-items-end buttons">
+  <div class="d-flex justify-content-around align-items-end buttons bg-white">
     <div class="back btn btn-primary">
       <%= link_to "retour", search_path  %>
     </div>
@@ -14,7 +14,7 @@
         <%= f.input :origin_latitude, as: :hidden %>
         <%= f.input :origin_longitude, as: :hidden %>
         <%= f.input :destination_address, input_html: { value: params[:query]}, as: :hidden %>
-        <%= f.submit "ride", class: "btn btn-primary" %>
+        <%= f.submit "ride", class: "btn btn-cool" %>
       <% end %>
     </div>
   </div>
@@ -23,13 +23,13 @@
     <div class="blur-wrapper"></div>
     <div class="row no-gutters">
 
-      <%= form_tag search_path, method: :get do %>
+      <%= form_tag search_path, class: "search-form", method: :get do %>
         <%= text_field_tag :query,
-        params[:query],
-        class: "form-control", id: "search",
-        placeholder: "Où allez-vous ?"
-      %>
-        <%= submit_tag "Rechercher", class: "btn btn-secondary" %>
+          params[:query],
+          class: "form-control", id: "search",
+          placeholder: "Où allez-vous ?"
+        %>
+        <%= submit_tag "", class: "btn btn-secondary d-none" %>
       <% end %>
     </div>
   </div>
