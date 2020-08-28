@@ -4,9 +4,21 @@
 }
 
 .btn-map-layers {
-  border-radius: 50%;
-  background-image: linear-gradient($cyclee_pink, $cyclee_orange);
   width: 40px;
+  border-radius: 50%;
+  background: linear-gradient($cyclee_pink, $cyclee_orange);
+  margin: 35px 15px;
+  padding: 6px;
+  text-align: center;
+}
+
+.btn-dangers {
+  width: 40px;
+  border-radius: 50%;
+  background: $cyclee_purple;
+  margin: 35px 15px;
+  padding: 6px;
+  text-align: center;
 }
 
 // .btn-cool {
