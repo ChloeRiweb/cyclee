@@ -27,7 +27,7 @@ class RidesController < ApplicationController
   def edit
     @ride = Ride.find(params[:id])
     @cycling_waypoints = get_waypoints(@ride, 'cycling')
-    @cycling_waypoints_alt = get_waypoints_alt(@ride, 'cycling')
+    @cycling_waypoints_alt = get_waypoints_alt(@ride, 'driving')
   end
 
   def update
@@ -38,7 +38,7 @@ class RidesController < ApplicationController
   def show
     set_parkings_spots
     if @ride.bike_friendly
-      @cycling_waypoints = get_waypoints_alt(@ride, 'cycling')
+      @cycling_waypoints = get_waypoints_alt(@ride, 'driving')
     else
       @cycling_waypoints = get_waypoints(@ride, 'cycling')
     end
