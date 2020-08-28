@@ -3,37 +3,38 @@
   color: white;
 }
 
-
-.btn-cool {
-  background-image: linear-gradient($cyclee_pink, $cyclee_orange);
-  // color: $white !important;
-  text-decoration: none !important;
-}
-
-.btn-cool a { color:white }
-
-.btn-cool:hover {
-  text-decoration: none !important;
-  color: $white !important;
-}
-
-.btn-fast {
-  background-color: $white;
-  color: $cyclee_blue_primary;
-}
-
-.btn-cool, .btn-fast {
-  font-family: $poppins;
-  font-weight: semi-bold;
-  font-size: 20px;
-  text-align: center;
-  border-radius: 50px;
-  // padding: 12px 50px 12px 50px;
-  // margin: -25px -20px 20px 0px;
-}
-
 .btn-map-layers {
   border-radius: 50%;
   background-image: linear-gradient($cyclee_pink, $cyclee_orange);
   width: 40px;
 }
+
+// .btn-cool {
+//   background-image: linear-gradient($cyclee_pink, $cyclee_orange);
+//   // color: $white !important;
+//   text-decoration: none !important;
+// }
+
+// .btn-cool a { color:white }
+
+// .btn-cool:hover {
+//   text-decoration: none !important;
+//   color: $white !important;
+// }
+
+// .btn-fast {
+//   background-color: $white;
+//   color: $cyclee_blue_primary;
+// }
+
+// .btn-cool, .btn-fast {
+//   font-family: $poppins;
+//   font-weight: semi-bold;
+//   font-size: 20px;
+//   text-align: center;
+//   border-radius: 50px;
+//   // padding: 12px 50px 12px 50px;
+//   // margin: -25px -20px 20px 0px;
+// }
+
+
