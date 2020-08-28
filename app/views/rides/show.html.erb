@@ -1,5 +1,5 @@
 <div id="map_show"
-  style="width: 100vw; height: 500px;"
+  style="width: 100vw; height: 100vh;"
   data-markers="<%= @markers.to_json %>"
   data-parkings-spots="<%#= @parkings_spots.to_json %>"
   data-cycling-waypoints="<%= @cycling_waypoints.to_json %>"
@@ -7,14 +7,11 @@
 </div>
 
 <div class="blur-background bottom-menu">
-  <div class="blur-wrapper">
+  <div class="blur-wrapper"></div>
     <div class="row no-gutters">
 
-
-
       <div class="btn-map-layers">
-        a
-        fa_icon "layer-group"
+        <i class="fas fa-layer-group text-white"></i>
       </div>
 
       <div class="time">
@@ -25,9 +22,9 @@
 
       </div>
     </div>
-  </div>
-
 </div>
+
+
 <!-- <div>
   <%= @parkings_spots.first[:lat] %>
   <%= @parkings_spots.first[:lng] %>
