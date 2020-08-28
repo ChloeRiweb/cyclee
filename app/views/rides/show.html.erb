@@ -18,17 +18,35 @@
         15min - 3km
       </div>
 
-      <%= link_to new_ride_danger_path(@ride) do %>
-        <i class="fas fa-exclamation text-white btn btn-dangers"></i>
-      <% end %>
+      <%#= link_to new_ride_danger_path(@ride) do %>
+        <div id="post-content" data-toggle="modal" data-target="#modalDanger">>
+          <i class="fas fa-exclamation text-white btn btn-dangers"></i>
+        </div>
+      <%# end %>
     </div>
 </div>
 
-
-<!-- <div>
+<!-- Modal -->
+<div class="modal fade" id="modalDanger" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'dangers/new', ride: @ride %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div><!-- <div>
   <%= @parkings_spots.first[:lat] %>
   <%= @parkings_spots.first[:lng] %>
 </div>
  -->
-
-
