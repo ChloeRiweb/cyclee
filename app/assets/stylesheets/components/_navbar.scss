@@ -1,6 +1,11 @@
 .navbar-lewagon {
   display:flex;
   justify-content: end;
+  position: absolute;
+  height: 70px;
+  background-color: transparent;
+  z-index: 1;
+  width: 100%;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -11,9 +16,16 @@
   background-color: white;
   width: 56px;
   border-radius: 50%;
+  padding: 5px 0 3px 0;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
   p {
-    font-size: 24px;
+    font-size: 32px;
     margin-bottom: 0;
-    margin: 10px 0;
   }
+}
+
+.dropdown-toggle::after {
+  display: none;
 }
