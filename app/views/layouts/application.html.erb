@@ -18,7 +18,7 @@
   </head>
 
   <body id="<%= controller_name %>-<%= action_name %>">
-    <%= render 'shared/navbar' unless params[:action] ==  "home" %>
+    <%= render 'shared/navbar' unless params[:action] ==  "home" || !user_signed_in? %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>
