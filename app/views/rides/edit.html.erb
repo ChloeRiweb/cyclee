@@ -7,12 +7,15 @@
 
 <div class="d-flex justify-content-around align-items-end buttons">
   <div class="back btn btn-primary">
-    <%= link_to "Safe & Rapide", ride_path  %>
+    <%= simple_form_for(@ride, html: { id: "edit_ride_32_unfriendly"}) do |f| %>
+      <%= f.input :bike_friendly, input_html: { value: false, id: "ride_bike_unfriendly" }, as: :hidden %>
+      <%= f.submit "Safe & Rapide", class: "btn btn-primary" %>
+    <% end %>
   </div>
 
   <div>
-    <%= simple_form_for(@ride) do |f| %>
-      <%= f.input :bike_friendly, input_html: { value: true }, as: :hidden %>
+    <%= simple_form_for(@ride, html: { id: "edit_ride_32_friendly"}) do |f| %>
+      <%= f.input :bike_friendly, input_html: { value: true, id: "ride_bike_friendly" }, as: :hidden %>
       <%= f.submit "Safe & Cool", class: "btn btn-primary" %>
     <% end %>
   </div>
