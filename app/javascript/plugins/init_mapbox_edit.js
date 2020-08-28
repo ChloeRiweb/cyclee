@@ -15,7 +15,7 @@ const initMapboxEdit = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map_edit',
-      style: 'mapbox://styles/mapbox/streets-v10',
+      style: 'mapbox://styles/chloeri/ckecwoto80ikm19p5q5qk4yf9',
       center: cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)],
       zoom: 12
     });
