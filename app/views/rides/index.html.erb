@@ -1,0 +1,10 @@
+<h1>Mes itinéraires</h1>
+<% @rides.each_with_index do |ride, index| %>
+  <div class="d-flex">
+    <p class="mr-3"><%= index %></p>
+    <div>
+      <p>Adresse de départ: <%= ride.ride_origin_address %></p>
+      <p>Adresse d'arrivée: <%= ride.destination_address %> </p>
+    </div>
+  </div>
+<% end %>
