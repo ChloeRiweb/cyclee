@@ -2,10 +2,10 @@
   display:flex;
   justify-content: flex-end;
   position: absolute;
-  height: 70px;
+  height: 52px;
   background-color: transparent;
   z-index: 1;
-  width: 100%;
+  width: 102%;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -14,15 +14,15 @@
 
 #navbarSupportedContent {
   background-color: white;
-  width: 56px;
+  width: 38px;
   border-radius: 50%;
-  padding: 5px 0 3px 0;
+  padding: -20px 0 3px 0;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   p {
-    font-size: 32px;
+    font-size: 25px;
     margin-bottom: 0;
   }
 }
