@@ -1,10 +1,10 @@
-<h1>Mes itinéraires</h1>
-<% @rides.each_with_index do |ride, index| %>
-  <div class="d-flex">
-    <p class="mr-3"><%= index %></p>
-    <div>
-      <p>Adresse de départ: <%= ride.ride_origin_address %></p>
-      <p>Adresse d'arrivée: <%= ride.destination_address %> </p>
+<div class="">
+  <h3 class="mb-3 p-3">Mes recherches</h3>
+  <% @rides.each do |ride| %>
+    <div class="m-3 border-bottom">
+      <%= link_to search_path(query: ride) do %>
+        <%= ride %>
+      <% end %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

@@ -5,8 +5,7 @@ class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update]
 
   def index
-    @ride_origin_address = origin_address(ride.origin_latitude, ride.origin_longitude)
-    @rides = Ride.all
+    @rides = Ride.select(:destination_address).map(&:destination_address).uniq
   end
 
   def search
@@ -113,10 +112,5 @@ class RidesController < ApplicationController
   def set_bikes_shops
     filepath = 'db/scrape/reparateurs.yaml'
     @bikes_shops = YAML.load_file(filepath)
-  end
-
-  def origin_address(latitude, longitude)
-    results = Geocoder.search([latitude, longitude])
-    origin_add = results.first.address
   end
 end

@@ -7,7 +7,4 @@ class Ride < ApplicationRecord
 
   geocoded_by :destination_address, latitude: :destination_latitude, longitude: :destination_longitude
   after_validation :geocode, if: :will_save_change_to_destination_address?
-
-  reverse_geocoded_by :origin_latitude, :origin_longitude
-  after_validation :reverse_geocode
 end
