@@ -4,6 +4,10 @@ require 'yaml'
 class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update]
 
+  def index
+    @rides = Ride.select(:destination_address).map(&:destination_address).uniq
+  end
+
   def search
     if params[:query].present?
       results = Geocoder.search(params[:query])
