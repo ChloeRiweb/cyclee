@@ -1,4 +1,4 @@
-<%= form_tag ride_dangers_path, id: "danger_form" do |f| %>
+<%= form_tag ride_dangers_path(@ride_id), id: "danger_form" do |f| %>
   <div class="custom-control custom-radio ml-3 mb-3">
     <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" onClick="validateRadio();">
     <label class="custom-control-label" for="customRadio1">Nids de poules</label>
