@@ -98,4 +98,19 @@ const addMarkersParkings = (mapElement, map) => {
   }
 }
 
+const addMarkersPumps = (mapElement, map) => {
+  const pumps = YAML.load_file(mapElement.dataset.pumps);
+  if (pumps) {
+    pumps.forEach((pump) => {
+      new mapboxgl.Marker()
+        .setLngLat([
+          pump.lng,
+          pump.lat ])
+        .addTo(map);
+    })
+  }
+}
+
+
+
 export { initMapbox };

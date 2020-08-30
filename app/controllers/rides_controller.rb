@@ -12,6 +12,8 @@ class RidesController < ApplicationController
       @ride = Ride.new
     end
     set_parkings_spots
+    set_pumps_spots
+    set_bikes_shops_spots
   end
 
   def create
@@ -37,6 +39,9 @@ class RidesController < ApplicationController
 
   def show
     set_parkings_spots
+    set_pumps_spots
+    set_bikes_shops_spots
+
     if @ride.bike_friendly
       @cycling_waypoints = get_waypoints_alt(@ride, 'driving')
     else
@@ -101,12 +106,12 @@ class RidesController < ApplicationController
   end
 
   def set_pumps_spots
-    filepath = 'db/scrape/pump.yaml'
-    @pumps = YAML.load_file(filepath)
+    filepath = 'db/scrape/pumps_spots.yaml'
+    @pumps = YAML.parse(filepath)
   end
 
-  def set_bikes_shops
-    filepath = 'db/scrape/reparateurs.yaml'
-    @bikes_shops = YAML.load_file(filepath)
+  def set_bikes_shops_spots
+    filepath = 'db/scrape/set_bikes_shops_spots.yaml'
+    @bikes_shops = YAML.parse(filepath)
   end
 end

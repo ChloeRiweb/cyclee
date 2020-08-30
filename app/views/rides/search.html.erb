@@ -7,7 +7,7 @@
 
 <% if params[:query].present? %>
   <div class="pb-3 px-3 bottom-menu">
-    <div class="p-2 d-flex flex-column align-items-center bd-highlight bg-white" style="border-radius: 3%">
+    <div class="p-2 d-flex flex-column align-items-center bd-highlight bg-white" style="border-radius: 30px;">
       <p class='text-address mb-0'>Vous avez cherché:</p>
       <p class="mb-0 text-center font-weight-light"><%= params[:query] %></p>
         <%= simple_form_for(@ride, html: {class: "mb-3"}) do |f| %>
@@ -37,3 +37,5 @@
     </div>
   </div>
 <% end %>
+
+
