@@ -11,10 +11,29 @@
   background-color: $cyclee_pink;
 }
 
+.mapboxgl-user-location-dot:after {
+  background-color: $cyclee_pink;
+}
+
 .mapboxgl-user-location-accuracy-circle {
   background-color: transparent;
 }
 
+.mapboxgl-user-location-accuracy-circle {
+  position : relative;
+  width : 50px;
+  height : 50px;
+  background-color : transparent;
+  border : 3px solid $cyclee_pink;
+  -webkit-transition : border 500ms ease-out;
+  -moz-transition : border 500ms ease-out;
+  -o-transition : border 500ms ease-out;
+  transition : border 500ms ease-out;
+}
+
+// #content:after {
+//     border-color: pink;
+// }
 // .mapbox-user-location-accuarcy-circle {
 //   border-color: $cyclee_pink;
 //   border-width: 20px;
