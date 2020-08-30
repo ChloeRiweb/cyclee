@@ -41,7 +41,7 @@ class RidesController < ApplicationController
 
   def show
     set_parkings_spots
-    @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude,@ride.destination_longitude])
+    @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
       @cycling_waypoints = get_waypoints_alt(@ride, 'driving')
     else
