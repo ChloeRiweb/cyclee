@@ -1,0 +1,5 @@
+meta_product_name: "Cyclee"
+meta_title: "Cyclee - le meilleur GPS vélo pour la ville"
+meta_description: "Prenez votre vélo et découvrez les itinéraires les plus adaptés pour vous. Cyclee est le premier GPS vélo communautaire."
+meta_image: "cover.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
