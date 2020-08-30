@@ -29,7 +29,6 @@ class RidesController < ApplicationController
   end
 
   def edit
-    @ride = Ride.find(params[:id])
     @cycling_waypoints = get_waypoints(@ride, 'cycling')
     @cycling_waypoints_alt = get_waypoints_alt(@ride, 'driving')
   end
