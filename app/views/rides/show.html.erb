@@ -15,8 +15,8 @@
       </div>
 
       <div class="time font-weight-light">
-        <p>15min</p>
-        <p><%= @distance.round %> kms</p>
+        <p><%= @duration.round %> mins</p>
+        <p><%= @distance.truncate(2) %> kms</p>
       </div>
 
       <div class="btn-dangers">
