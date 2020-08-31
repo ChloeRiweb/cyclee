@@ -1,0 +1,10 @@
+<div class="">
+  <h3 class="mb-3 p-3">Mes recherches</h3>
+  <% @rides.each do |ride| %>
+    <div class="m-3 border-bottom">
+      <%= link_to search_path(query: ride) do %>
+        <%= ride %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -14,7 +14,7 @@
           <%= f.input :origin_latitude, as: :hidden %>
           <%= f.input :origin_longitude, as: :hidden %>
           <%= f.input :destination_address, input_html: { value: params[:query]}, as: :hidden %>
-          <%= f.submit "On y va !", class: "btn btn-cool" %>
+          <%= f.submit "On y va !", class: "btn btn-go" %>
         <% end %>
       <%= link_to "Je fais une nouvelle recherche", search_path  %>
     </div>
