@@ -1,5 +1,5 @@
 <%= simple_form_for [ride, danger] do |f| %>
-  <%= f.collection_radio_buttons :category, [["nid de poule", "Nid de poule"], ["travaux", "Travaux"], ["routes barrées", "Routes barrées"]], :first, :last %>
+  <%= f.collection_radio_buttons :category, [["nid de poule", "Nid de poule"], ["travaux", "Travaux"], ["routes barrées", "Routes barrées"]], :first, :last, class: "mr-3" %>
   <%= f.input :latitude, as: :hidden %>
   <%= f.input :longitude, as: :hidden %>
   <%= f.submit %>

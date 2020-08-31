@@ -1,12 +1,18 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 
+const getCurrentPosition = () => {
+  return new Promise(function(resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
+
 const initMapboxShow = () => {
 
   const mapElement = document.getElementById('map_show');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
-
+    fillRideForm();
     const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -52,9 +58,17 @@ const initMapboxShow = () => {
         }
       });
     });
-
- }
+  }
 }
 
+const fillRideForm = async () => {
+  const position = await getCurrentPosition();
+  const latInput = document.getElementById('danger_latitude');
+  const longInput = document.getElementById('danger_longitude');
+  if (latInput) {
+    latInput.value = position.coords.latitude;
+    longInput.value = position.coords.longitude;
+  }
+}
 
 export { initMapboxShow };
