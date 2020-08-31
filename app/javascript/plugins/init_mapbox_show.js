@@ -1,6 +1,36 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 
+
+// To use in show page
+// only around the destination point (radius 30m)
+const addMarkersParkings = (mapElement, map) => {
+  const parkings = JSON.parse(mapElement.dataset.parkings);
+  if (parkings) {
+    parkings.forEach((parking) => {
+      new mapboxgl.Marker()
+        .setLngLat([
+          parking.lng,
+          parking.lat ])
+        .addTo(map);
+    })
+  }
+}
+
+const addMarkersPumps = (mapElement, map) => {
+  const pumps = JSON.parse(mapElement.dataset.pumps);
+  console.log(pumps);
+  if (pumps) {
+    pumps.forEach((pump) => {
+      new mapboxgl.Marker()
+        .setLngLat([
+          pump.lng,
+          pump.lat ])
+        .addTo(map);
+    })
+  }
+}
+
 const initMapboxShow = () => {
 
   const mapElement = document.getElementById('map_show');
@@ -43,6 +73,9 @@ const initMapboxShow = () => {
         }
       });
     });
+
+    addMarkersParkings(mapElement, map);
+    addMarkersPumps(mapElement, map);
  }
 }
 

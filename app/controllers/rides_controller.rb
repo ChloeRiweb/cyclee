@@ -101,17 +101,21 @@ class RidesController < ApplicationController
         element['geometry']['coordinates'][0].between?(2.224122, 2.4697602)
     end
     @parkings_spots = @parkings_spots.map do |element|
-      { lat: element[:lat], lng: element[:lng] }
+      {
+        lat: element['geometry']['coordinates'][1],
+        lng: element['geometry']['coordinates'][0],
+        # image_url: helpers.asset_url('parking') // a creuser pour remplacer l'image du marker
+      }
     end
   end
 
   def set_pumps_spots
     filepath = 'db/scrape/pumps_spots.yaml'
-    @pumps = YAML.parse(filepath)
+    @pumps = YAML.load_file(filepath)
   end
 
   def set_bikes_shops_spots
-    filepath = 'db/scrape/set_bikes_shops_spots.yaml'
-    @bikes_shops = YAML.parse(filepath)
+    filepath = 'db/scrape/bikes_shops_spots.yaml'
+    @bikes_shops = YAML.load_file(filepath)
   end
 end
