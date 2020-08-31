@@ -55,7 +55,7 @@ class RidesController < ApplicationController
     # set_bikes_shops_spots
     # @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
-      data = get_waypoints_alt(@ride, 'driving')
+      data = get_waypoints_alt(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
     else
       data = get_waypoints(@ride, 'cycling')

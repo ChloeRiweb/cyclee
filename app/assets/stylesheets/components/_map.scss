@@ -31,3 +31,12 @@
 a.mapboxgl-ctrl-logo, .mapboxgl-ctrl-bottom-right {
     display: none;
 }
+
+.marker-danger {
+  background-image: url('pothole-road.png');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}

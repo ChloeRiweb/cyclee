@@ -76,9 +76,11 @@ const initMapboxShow = () => {
     });
 
     if (markersDanger) {
-      markersDanger.forEach((marker) => {
-        new mapboxgl.Marker()
-          .setLngLat([ marker.lng, marker.lat ])
+      markersDanger.forEach((markerDanger) => {
+        const el = document.createElement('div');
+        el.className = 'marker-danger';
+        new mapboxgl.Marker(el)
+          .setLngLat([ markerDanger.lng, markerDanger.lat ])
           .addTo(map);
       });
     }
