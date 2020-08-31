@@ -12,13 +12,23 @@ const getCurrentPosition = () => {
   });
 }
 
+const addMarker = async (map) => {
+  const position = await getCurrentPosition();
+  map.flyTo({
+    center: [position.coords.longitude, position.coords.latitude]
+  });
+}
+
 const initMapboxShow = () => {
 
   const mapElement = document.getElementById('map_show');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
+
     fillRideForm();
+
     const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
+    const markersDanger = JSON.parse(mapElement.dataset.markersDanger);
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
@@ -49,6 +59,7 @@ const initMapboxShow = () => {
           }
         }
       });
+
       map.addLayer({
         id: 'cycling',
         type: 'line',
@@ -63,6 +74,14 @@ const initMapboxShow = () => {
         }
       });
     });
+
+    if (markersDanger) {
+      markersDanger.forEach((marker) => {
+        new mapboxgl.Marker()
+          .setLngLat([ marker.lng, marker.lat ])
+          .addTo(map);
+      });
+    }
   }
 
     // addMarkersParkings(mapElement, map);
