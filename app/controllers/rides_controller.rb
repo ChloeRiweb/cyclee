@@ -32,7 +32,7 @@ class RidesController < ApplicationController
 
   def edit
     @cycling_waypoints = get_waypoints(@ride, 'cycling')
-    @cycling_waypoints_alt = get_waypoints_alt(@ride, 'driving')
+    @cycling_waypoints_alt = get_waypoints_alt(@ride, 'cycling')
   end
 
   def update

@@ -22,7 +22,9 @@
 <% else %>
   <div class="d-flex flex-column bd-highlight mb-3">
     <div class="blur-background bottom-menu">
+
       <div class="blur-wrapper"></div>
+
       <div class="row no-gutters">
 
         <%= form_tag search_path, class: "search-form", method: :get do %>
@@ -33,6 +35,7 @@
           %>
           <%= submit_tag "", class: "btn btn-secondary d-none" %>
         <% end %>
+
       </div>
     </div>
   </div>
