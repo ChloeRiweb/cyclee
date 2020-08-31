@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   resources :rides, only: [:index, :create, :show, :edit, :update] do
     resources :dangers, only: [:new, :create]
+    resources :parkings, only: [:index]
   end
 end

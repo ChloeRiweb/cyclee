@@ -87,4 +87,4 @@ const fillRideForm = async () => {
 
 
 
-export { initMapbox };
+export { initMapbox, fitMapToMarkers };
