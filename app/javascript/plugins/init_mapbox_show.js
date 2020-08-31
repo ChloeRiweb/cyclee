@@ -1,6 +1,11 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 
+
+// import addMarkersParkings from 'init_parkings'
+// import addMarkersPumps from 'init_pumps'
+// import addMarkersShops from 'init_shops'
+
 const getCurrentPosition = () => {
   return new Promise(function(resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -59,6 +64,11 @@ const initMapboxShow = () => {
       });
     });
   }
+
+    // addMarkersParkings(mapElement, map);
+    // addMarkersPumps(mapElement, map);
+    // addMarkersShops(mapElement, map);
+ }
 }
 
 const fillRideForm = async () => {
