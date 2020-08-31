@@ -27,15 +27,7 @@
 .mapboxgl-marker-anchor-center {
 
 }
-// #content:after {
-//     border-color: pink;
-// }
-// .mapbox-user-location-accuarcy-circle {
-//   border-color: $cyclee_pink;
-//   border-width: 20px;
-//   background-attachment: non;
-// }
 
-// .mapboxgl-user-location-accuracy-circle, .mapboxgl-marker, .mapboxgl-marker-anchor-center {
-//   background-color: none;
-// }
+a.mapboxgl-ctrl-logo, .mapboxgl-ctrl-bottom-right {
+    display: none;
+}
