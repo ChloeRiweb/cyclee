@@ -31,6 +31,7 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initTimeOutHome } from '../plugins/init_timeouthome';
 // import { validateRadio } from '../plugins/validateRadio';
 import { searchValidation } from '../components/search_validation';
+import { initMapboxParkings } from '../plugins/init_mapbox_parkings';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -44,5 +45,6 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   initTimeOutHome();
   searchValidation();
+  initMapboxParkings();
   // validateRadio();
 });

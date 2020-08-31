@@ -15,9 +15,9 @@ class RidesController < ApplicationController
       @markers = [{ lat: results.first.coordinates.first, lng: results.first.coordinates.last }]
       @ride = Ride.new
     end
-    set_parkings_spots
-    set_pumps_spots
-    set_bikes_shops_spots
+    # set_parkings_spots
+    # set_pumps_spots
+    # set_bikes_shops_spots
   end
 
   def create
@@ -42,10 +42,10 @@ class RidesController < ApplicationController
 
   def show
     @danger = Danger.new
-    set_parkings_spots
+    # set_parkings_spots
 
-    set_pumps_spots
-    set_bikes_shops_spots
+    # set_pumps_spots
+    # set_bikes_shops_spots
     # @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
       data = get_waypoints_alt(@ride, 'driving')
@@ -103,38 +103,21 @@ class RidesController < ApplicationController
     @ride = Ride.find(params[:id])
   end
 
-  def set_parkings_spots
-    filepath = 'db/scrape/parkings_spots.json'
-    @parkings = JSON.parse(File.read(filepath))
+  # def set_pumps_spots
+  #   filepath = 'db/scrape/pumps_spots.yaml'
+  #   @pumps = YAML.load_file(filepath)
+  # end
 
-    @parkings_spots = @parkings.select do |element|
-      element['geometry']['coordinates'][1].between?(48.8155755, 48.902156) &&
-        element['geometry']['coordinates'][0].between?(2.224122, 2.4697602)
-    end
-    @parkings_spots = @parkings_spots.map do |element|
-      {
-        lat: element['geometry']['coordinates'][1],
-        lng: element['geometry']['coordinates'][0]
-        # image_url: helpers.asset_url('parking') // a creuser pour remplacer l'image du marker
-      }
-    end
-  end
+  # def set_bikes_shops_spots
+  #   filepath = 'db/scrape/bikes_shops_spots.yaml'
+  #   @bikes_shops = YAML.load_file(filepath)
 
-  def set_pumps_spots
-    filepath = 'db/scrape/pumps_spots.yaml'
-    @pumps = YAML.load_file(filepath)
-  end
-
-  def set_bikes_shops_spots
-    filepath = 'db/scrape/bikes_shops_spots.yaml'
-    @bikes_shops = YAML.load_file(filepath)
-
-    @bikes_shops = @bikes_shops.map do |shop|
-      {
-        lat: shop[:latitude],
-        lng: shop[:longitude]
-        # image_url: helpers.asset_url('parking') // a creuser pour remplacer l'image du marker
-      }
-    end
-  end
+  #   @bikes_shops = @bikes_shops.map do |shop|
+  #     {
+  #       lat: shop[:latitude],
+  #       lng: shop[:longitude]
+  #       # image_url: helpers.asset_url('parking') // a creuser pour remplacer l'image du marker
+  #     }
+  #   end
+  # end
 end
