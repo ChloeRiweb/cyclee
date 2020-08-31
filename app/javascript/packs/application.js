@@ -30,7 +30,6 @@ import { initMapboxShow } from '../plugins/init_mapbox_show';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initTimeOutHome } from '../plugins/init_timeouthome';
 import { searchValidation } from '../components/search_validation';
-import { initTimeOutFlashes } from '../plugins/init_timeoutflashes';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -38,6 +37,9 @@ import { initTimeOutFlashes } from '../plugins/init_timeoutflashes';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  $(".alert").delay(2000).slideUp(500, function(){
+    $(".alert").alert('close');
+  });
   initMapbox();
   initMapboxEdit();
   initMapboxShow();
