@@ -37,6 +37,7 @@
   }
 }
 
+
 .blur-wrapper {
   position: absolute;
   bottom: 0;
@@ -72,11 +73,12 @@
   .blur-wrapper {
       position: absolute;
       bottom: 0;
-      background: #CBDEF6;
+      background: linear-gradient(0deg, rgba(203,222,246,1) 0%, rgba(200,222,246,0.7) 90%, rgba(199,222,246,0.4023984593837535) 95%, rgba(197,222,246,0) 100%);
       z-index: 1;
       width: 100vw;
       height: 120px;
       left: 0;
+
       filter: blur(30px);
   }
 }
@@ -125,19 +127,16 @@
       }
     }
   }
+
   // algolia pimpage
   button.ap-input-icon.ap-icon-pin {
     display: none;
   }
 
-  .ap-input-icon {
-    border: 0;
-    background: transparent;
-    position: absolute;
-    top: -61px;
-    right: -24px;
-    outline: none;
-  }
+.ap-input-icon svg {
+  top: 0;
+  right: -250%;
+}
 
   span#algolia-places-listbox-0 {
     top: auto !important;
@@ -147,9 +146,14 @@
     color: $cyclee_pink;
     .ap-cursor {
       background: #cbdef6;
+      border-radius: 30px;
     }
     .ap-footer {
       display: none;
+    }
+
+    .ap-dataset-places {
+      border-radius: 50px;
     }
   }
 }
@@ -157,4 +161,27 @@
 p {
   color: $cyclee_blue_primary;
 
+}
+
+#new_danger {
+  display: flex;
+  flex-direction: column;
+}
+
+#danger_category_nid_de_poule {
+  margin-right: 10px;
+}
+
+#danger_category_travaux {
+  margin-right: 10px;
+}
+
+#danger_category_routes_barrées {
+  margin-right: 10px;
+}
+
+.bottom-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,12 +1,23 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 
+
+// import addMarkersParkings from 'init_parkings'
+// import addMarkersPumps from 'init_pumps'
+// import addMarkersShops from 'init_shops'
+
+const getCurrentPosition = () => {
+  return new Promise(function(resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
+
 const initMapboxShow = () => {
 
   const mapElement = document.getElementById('map_show');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
-
+    fillRideForm();
     const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -16,6 +27,15 @@ const initMapboxShow = () => {
       center: cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)],
       zoom: 12
     });
+
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+        enableHighAccuracy: true
+        },
+        trackUserLocation: true
+      })
+    );
 
     map.on('load', function() {
       map.addSource('cycling', {
@@ -43,9 +63,21 @@ const initMapboxShow = () => {
         }
       });
     });
+  }
 
+    // addMarkersParkings(mapElement, map);
+    // addMarkersPumps(mapElement, map);
+    // addMarkersShops(mapElement, map);
  }
-}
 
+const fillRideForm = async () => {
+  const position = await getCurrentPosition();
+  const latInput = document.getElementById('danger_latitude');
+  const longInput = document.getElementById('danger_longitude');
+  if (latInput) {
+    latInput.value = position.coords.latitude;
+    longInput.value = position.coords.longitude;
+  }
+}
 
 export { initMapboxShow };
