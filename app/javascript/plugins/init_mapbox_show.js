@@ -17,6 +17,15 @@ const initMapboxShow = () => {
       zoom: 12
     });
 
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+        enableHighAccuracy: true
+        },
+        trackUserLocation: true
+      })
+    );
+
     map.on('load', function() {
       map.addSource('cycling', {
         type: 'geojson',

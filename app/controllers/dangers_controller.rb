@@ -6,9 +6,11 @@ class DangersController < ApplicationController
 
   def create
     @ride = Ride.find(params[:ride_id])
-    @danger = Danger.new(dangers_params)
+    @danger = Danger.new(danger_params)
     @danger.ride = @ride
-    @danger.user = current_user
+    # @danger.longitude = params["danger"]["longitude"]
+    # @danger.latitude = params["danger"]["latitude"]
+    raise
     if @danger.save!
       redirect_to ride_path(@ride)
     else

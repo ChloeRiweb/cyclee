@@ -1,15 +1,7 @@
-<%= form_tag ride_dangers_path(@ride_id), id: "danger_form" do |f| %>
-  <div class="custom-control custom-radio ml-3 mb-3">
-    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" onClick="validateRadio();">
-    <label class="custom-control-label" for="customRadio1">Nids de poules</label>
-  </div>
-  <div class="custom-control custom-radio ml-3 mb-3">
-    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" onClick="validateRadio();">
-    <label class="custom-control-label" for="customRadio2">Travaux</label>
-  </div>
-  <div class="custom-control custom-radio ml-3 mb-3">
-    <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" onClick="validateRadio();">
-    <label class="custom-control-label" for="customRadio3">Routes barrées</label>
-  </div>
+<%= simple_form_for [ride, danger] do |f| %>
+  <%= f.collection_radio_buttons :category, [["nid de poule", "Nid de poule"], ["travaux", "Travaux"], ["routes barrées", "Routes barrées"]], :first, :last %>
+  <%= f.input :latitude, as: :hidden %>
+  <%= f.input :longitude, as: :hidden %>
+  <%= f.submit %>
 <% end %>
 

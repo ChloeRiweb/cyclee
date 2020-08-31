@@ -8,22 +8,19 @@
 
 <div class="blur-background bottom-menu">
   <div class="blur-wrapper"></div>
-    <div class="row no-gutters d-flex justify-content-between align-items-center">
-
-      <div class="btn-map-layers">
-        <i class="fas fa-layer-group text-white"></i>
-      </div>
-
-      <div class="time font-weight-light">
-        15min - 3km
-      </div>
-
-      <%#= link_to new_ride_danger_path(@ride) do %>
-        <div id="post-content" data-toggle="modal" data-target="#modalDanger">>
-          <i class="fas fa-exclamation text-white btn btn-dangers"></i>
-        </div>
-      <%# end %>
+  <div class="row no-gutters d-flex justify-content-between align-items-center">
+    <div class="btn-map-layers">
+      <i class="fas fa-layer-group text-white"></i>
     </div>
+
+    <div class="time font-weight-light">
+      15min - 3km
+    </div>
+
+    <div id="post-content" data-toggle="modal" data-target="#modalDanger">>
+      <i class="fas fa-exclamation text-white btn btn-dangers"></i>
+    </div>
+  </div>
 </div>
 
 <!-- Modal -->
@@ -37,7 +34,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= render 'dangers/new', ride: @ride %>
+        <%= render 'dangers/new', ride: @ride, danger: @danger %>
       </div>
     </div>
   </div>

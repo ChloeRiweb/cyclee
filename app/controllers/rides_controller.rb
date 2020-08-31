@@ -39,6 +39,7 @@ class RidesController < ApplicationController
   end
 
   def show
+    @danger = Danger.new
     set_parkings_spots
     if @ride.bike_friendly
       @cycling_waypoints = get_waypoints_alt(@ride, 'driving')
