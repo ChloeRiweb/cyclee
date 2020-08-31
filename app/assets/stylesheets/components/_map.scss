@@ -6,3 +6,36 @@
 .mapboxgl-ctrl-top-right {
   top: 70px;
 }
+
+.mapboxgl-user-location-dot {
+  background-color: $cyclee_pink;
+}
+
+.mapboxgl-user-location-dot:before,
+.mapboxgl-user-location-dot:after {
+  background-color: $cyclee_pink;
+}
+
+.mapboxgl-user-location-accuracy-circle {
+  background-color: transparent;
+}
+
+.mapboxgl-user-location-accuracy-circle {
+  display: none;
+}
+
+.mapboxgl-marker-anchor-center {
+
+}
+// #content:after {
+//     border-color: pink;
+// }
+// .mapbox-user-location-accuarcy-circle {
+//   border-color: $cyclee_pink;
+//   border-width: 20px;
+//   background-attachment: non;
+// }
+
+// .mapboxgl-user-location-accuracy-circle, .mapboxgl-marker, .mapboxgl-marker-anchor-center {
+//   background-color: none;
+// }
