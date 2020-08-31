@@ -14,7 +14,8 @@
     </div>
 
     <div class="time font-weight-light">
-      15min - 3km
+      <p><%= @duration.round %> mins</p>
+      <p><%= @distance.truncate(2) %> kms</p>
     </div>
 
     <div id="post-content" data-toggle="modal" data-target="#modalDanger">>

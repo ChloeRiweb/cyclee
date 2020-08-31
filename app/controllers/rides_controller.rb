@@ -41,11 +41,17 @@ class RidesController < ApplicationController
   def show
     @danger = Danger.new
     set_parkings_spots
+    # @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
-      @cycling_waypoints = get_waypoints_alt(@ride, 'driving')
+      data = get_waypoints_alt(@ride, 'driving')
+      @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
     else
-      @cycling_waypoints = get_waypoints(@ride, 'cycling')
+      data = get_waypoints(@ride, 'cycling')
+      @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
     end
+
+    @duration = data[0]['routes'][0]['duration'] / 60
+    @distance = data[0]['routes'][0]['distance'] / 1000
   end
 
   private
@@ -59,9 +65,10 @@ class RidesController < ApplicationController
       "latitude" => ride.destination_latitude,
       "longitude" => ride.destination_longitude
     }], mode, {
-      geometries: "geojson"
+      geometries: "geojson",
+      # duration: true
     })
-    return data[0]['routes'][0]['geometry']['coordinates']
+    return data
   end
 
   def get_waypoints_alt(ride, mode)
@@ -77,7 +84,7 @@ class RidesController < ApplicationController
       alternatives: true
     })
     if data[0]['routes'].count > 1
-      return data[0]['routes'][1]['geometry']['coordinates']
+      return data
     else
       []
     end

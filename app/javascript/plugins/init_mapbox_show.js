@@ -52,7 +52,9 @@ const initMapboxShow = () => {
         }
       });
     });
+
  }
 }
+
 
 export { initMapboxShow };
