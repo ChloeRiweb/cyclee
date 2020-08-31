@@ -128,11 +128,21 @@
     display: none;
   }
 
+  .ap-input-icon {
+    border: 0;
+    background: transparent;
+    position: absolute;
+    top: -61px;
+    right: -24px;
+    outline: none;
+  }
+
   span#algolia-places-listbox-0 {
     top: auto !important;
     bottom: 100% !important;
     background: #e0edfb;
-    border-radius: 6px;
+    border-radius: 30px;
+    color: $cyclee_pink;
     .ap-cursor {
       background: #cbdef6;
     }
