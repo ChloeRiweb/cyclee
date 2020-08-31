@@ -45,4 +45,6 @@
 .btn-cool { color:white; }
 .btn-fast { color:$cyclee_blue_primary; }
 
-.btn-cool, .btn-fast:focus {outline:0;}
+.btn:focus {
+  box-shadow: none;
+}
