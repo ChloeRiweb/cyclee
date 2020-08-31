@@ -9,7 +9,6 @@ class HotspotsController < ApplicationController
         lat: element.latitude,
         lng: element.longitude,
         category: element.category
-        # image_url: helpers.asset_url('parking') // a creuser pour remplacer l'image du marker
       }
     end
 
