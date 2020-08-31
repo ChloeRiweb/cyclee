@@ -83,19 +83,8 @@ const fillRideForm = async () => {
     longInput.value = position.coords.longitude;
   }
 }
-// To use in show page
-// only around the destination point (radius 30m)
-const addMarkersParkings = (mapElement, map) => {
-  const parkings = JSON.parse(mapElement.dataset.parkings);
-  if (parkings) {
-    parkings.forEach((parking) => {
-      new mapboxgl.Marker()
-        .setLngLat([
-          parking.lng,
-          parking.lat ])
-        .addTo(map);
-    })
-  }
-}
+
+
+
 
 export { initMapbox };

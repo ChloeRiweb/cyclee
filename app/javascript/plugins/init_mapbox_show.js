@@ -1,6 +1,10 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 
+// import addMarkersParkings from 'init_parkings'
+// import addMarkersPumps from 'init_pumps'
+// import addMarkersShops from 'init_shops'
+
 const initMapboxShow = () => {
 
   const mapElement = document.getElementById('map_show');
@@ -44,6 +48,9 @@ const initMapboxShow = () => {
       });
     });
 
+    // addMarkersParkings(mapElement, map);
+    // addMarkersPumps(mapElement, map);
+    // addMarkersShops(mapElement, map);
  }
 }
 

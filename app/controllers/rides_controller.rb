@@ -16,6 +16,8 @@ class RidesController < ApplicationController
       @ride = Ride.new
     end
     set_parkings_spots
+    set_pumps_spots
+    set_bikes_shops_spots
   end
 
   def create
@@ -41,6 +43,9 @@ class RidesController < ApplicationController
 
   def show
     set_parkings_spots
+
+    set_pumps_spots
+    set_bikes_shops_spots
     # @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
       data = get_waypoints_alt(@ride, 'driving')
@@ -107,17 +112,29 @@ class RidesController < ApplicationController
         element['geometry']['coordinates'][0].between?(2.224122, 2.4697602)
     end
     @parkings_spots = @parkings_spots.map do |element|
-      { lat: element[:lat], lng: element[:lng] }
+      {
+        lat: element['geometry']['coordinates'][1],
+        lng: element['geometry']['coordinates'][0]
+        # image_url: helpers.asset_url('parking') // a creuser pour remplacer l'image du marker
+      }
     end
   end
 
   def set_pumps_spots
-    filepath = 'db/scrape/pump.yaml'
+    filepath = 'db/scrape/pumps_spots.yaml'
     @pumps = YAML.load_file(filepath)
   end
 
-  def set_bikes_shops
-    filepath = 'db/scrape/reparateurs.yaml'
+  def set_bikes_shops_spots
+    filepath = 'db/scrape/bikes_shops_spots.yaml'
     @bikes_shops = YAML.load_file(filepath)
+
+    @bikes_shops = @bikes_shops.map do |shop|
+      {
+        lat: shop[:latitude],
+        lng: shop[:longitude]
+        # image_url: helpers.asset_url('parking') // a creuser pour remplacer l'image du marker
+      }
+    end
   end
 end

@@ -1,7 +1,9 @@
 <div id="map_show"
   style="width: 100vw; height: 100vh;"
   data-markers="<%= @markers.to_json %>"
-  data-parkings-spots="<%#= @parkings_spots.to_json %>"
+  data-parkings="<%= @parkings_spots.to_json %>"
+  data-pumps="<%#= @pumps.to_json %>"
+  data-shops="<%#= @shops.to_json %>"
   data-cycling-waypoints="<%= @cycling_waypoints.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
@@ -24,12 +26,3 @@
       </div>
     </div>
 </div>
-
-
-<!-- <div>
-  <%= @parkings_spots.first[:lat] %>
-  <%= @parkings_spots.first[:lng] %>
-</div>
- -->
-
-
