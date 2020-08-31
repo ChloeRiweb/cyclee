@@ -103,7 +103,7 @@ class RidesController < ApplicationController
     @parkings_spots = @parkings_spots.map do |element|
       {
         lat: element['geometry']['coordinates'][1],
-        lng: element['geometry']['coordinates'][0],
+        lng: element['geometry']['coordinates'][0]
         # image_url: helpers.asset_url('parking') // a creuser pour remplacer l'image du marker
       }
     end
@@ -117,5 +117,13 @@ class RidesController < ApplicationController
   def set_bikes_shops_spots
     filepath = 'db/scrape/bikes_shops_spots.yaml'
     @bikes_shops = YAML.load_file(filepath)
+
+    @bikes_shops = @bikes_shops.map do |shop|
+      {
+        lat: shop[:latitude],
+        lng: shop[:longitude]
+        # image_url: helpers.asset_url('parking') // a creuser pour remplacer l'image du marker
+      }
+    end
   end
 end
