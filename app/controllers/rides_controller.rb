@@ -31,7 +31,6 @@ class RidesController < ApplicationController
   end
 
   def edit
-    @ride = Ride.find(params[:id])
     @cycling_waypoints = get_waypoints(@ride, 'cycling')
     @cycling_waypoints_alt = get_waypoints_alt(@ride, 'driving')
   end
@@ -42,6 +41,7 @@ class RidesController < ApplicationController
   end
 
   def show
+    @danger = Danger.new
     set_parkings_spots
 
     set_pumps_spots

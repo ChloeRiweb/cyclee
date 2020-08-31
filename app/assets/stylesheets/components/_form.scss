@@ -128,10 +128,6 @@
     }
   }
 
-
-
-
-
   // algolia pimpage
   button.ap-input-icon.ap-icon-pin {
     display: none;
@@ -165,6 +161,23 @@
 p {
   color: $cyclee_blue_primary;
 
+}
+
+#new_danger {
+  display: flex;
+  flex-direction: column;
+}
+
+#danger_category_nid_de_poule {
+  margin-right: 10px;
+}
+
+#danger_category_travaux {
+  margin-right: 10px;
+}
+
+#danger_category_routes_barrées {
+  margin-right: 10px;
 }
 
 .bottom-menu {

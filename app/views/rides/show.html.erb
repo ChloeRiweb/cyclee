@@ -10,19 +10,36 @@
 
 <div class="blur-background bottom-menu">
   <div class="blur-wrapper"></div>
-    <div class="row no-gutters d-flex justify-content-between align-items-center">
+  <div class="row no-gutters d-flex justify-content-between align-items-center">
+    <div class="btn-map-layers">
+      <i class="fas fa-layer-group text-white"></i>
+    </div>
 
-      <div class="btn-map-layers">
-        <i class="fas fa-layer-group text-white"></i>
+    <div class="time font-weight-light">
+      <p><%= @duration.round %> mins</p>
+      <p><%= @distance.truncate(2) %> kms</p>
+    </div>
+
+    <div id="post-content" data-toggle="modal" data-target="#modalDanger">>
+      <i class="fas fa-exclamation text-white btn btn-dangers"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalDanger" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Déclarer un danger</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-
-      <div class="time font-weight-light">
-        <p><%= @duration.round %> mins</p>
-        <p><%= @distance.truncate(2) %> kms</p>
-      </div>
-
-      <div class="btn-dangers">
-        <i class="fas fa-exclamation text-white"></i>
+      <div class="modal-body">
+        <%= render 'dangers/new', ride: @ride, danger: @danger %>
       </div>
     </div>
+  </div>
 </div>
+
