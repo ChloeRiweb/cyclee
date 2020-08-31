@@ -69,7 +69,6 @@ const initMapboxShow = () => {
     // addMarkersPumps(mapElement, map);
     // addMarkersShops(mapElement, map);
  }
-}
 
 const fillRideForm = async () => {
   const position = await getCurrentPosition();
