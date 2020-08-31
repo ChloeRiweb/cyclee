@@ -37,6 +37,7 @@
   }
 }
 
+
 .blur-wrapper {
   position: absolute;
   bottom: 0;
@@ -157,4 +158,10 @@
 p {
   color: $cyclee_blue_primary;
 
+}
+
+.bottom-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
