@@ -6,4 +6,31 @@
 .modal-content {
   width: 80%;
   border-radius: 10px 10px 0 0;
+  h5 {
+    color: $cyclee_blue_primary;
+  }
+}
+
+#danger_category_nid_de_poule {
+  color: $cyclee_purple;
+}
+
+#new_danger {
+  margin-left: 20px;
+  margin-right: 20px;
+  span {
+    margin-bottom: 10px;
+    color: $cyclee_blue_primary;
+    label {
+      margin-left: 20px;
+    }
+  }
+}
+
+#new_danger span:first-child {
+  margin-top: 10px;
+}
+
+.form-group {
+  margin: 0px;
 }
