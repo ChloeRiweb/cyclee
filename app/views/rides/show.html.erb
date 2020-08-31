@@ -15,8 +15,7 @@
       </div>
 
       <div class="time font-weight-light">
-        <p><%= @duration.round %> mins</p>
-        <p><%= @distance.truncate(2) %> kms</p>
+        <%= @duration.round %> mins - <%= @distance.truncate(2) %> kms
       </div>
 
       <div class="btn-dangers">
@@ -26,10 +25,6 @@
 </div>
 
 
-<!-- <div>
-  <%= @parkings_spots.first[:lat] %>
-  <%= @parkings_spots.first[:lng] %>
-</div>
- -->
+
 
 
