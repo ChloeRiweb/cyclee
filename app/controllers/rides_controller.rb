@@ -60,21 +60,6 @@ class RidesController < ApplicationController
 
   private
 
-  def get_waypoints(ride, mode)
-    Mapbox.access_token = ENV['MAPBOX_API_KEY']
-    data = Mapbox::Directions.directions([{
-      "latitude" => ride.origin_latitude,
-      "longitude" => ride.origin_longitude
-    }, {
-      "latitude" => ride.destination_latitude,
-      "longitude" => ride.destination_longitude
-    }], mode, {
-      geometries: "geojson",
-      alternatives: true
-    })
-    return data
-  end
-
   def ride_params
     params.require(:ride).permit(:origin_latitude, :origin_longitude, :destination_address, :destination_longitude, :destination_latitude, :bike_friendly)
   end
