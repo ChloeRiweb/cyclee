@@ -29,7 +29,7 @@ class HotspotsController < ApplicationController
 
   def repairer
     @ride = Ride.find(params[:ride_id])
-    @repairer = Hotspot.where(category: "repairer").near([@ride.destination_latitude, @ride.destination_longitude], 3, units: :km)
+    @repairers = Hotspot.where(category: "repairer").near([@ride.destination_latitude, @ride.destination_longitude], 3, units: :km)
     @repairers_markers = @repairers.map do |element|
       {
         lat: element.latitude,
