@@ -39,6 +39,13 @@ class RidesController < ApplicationController
 
   def show
     @danger = Danger.new
+    @markers_danger = @ride.dangers.map do |danger|
+      {
+        lat: danger.latitude,
+        lng: danger.longitude,
+        cat: danger.category
+      }
+    end
     # @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
       data = get_waypoints_alt(@ride, 'cycling')
