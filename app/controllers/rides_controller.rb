@@ -33,6 +33,10 @@ class RidesController < ApplicationController
   def edit
     @cycling_waypoints = get_waypoints(@ride, 'cycling')[0]['routes'][0]['geometry']['coordinates']
     @cycling_waypoints_alt = get_waypoints(@ride, 'cycling')[0]['routes'][1]['geometry']['coordinates']
+    @markers = [
+      # { lat: @cycling_waypoints.first[1], lng: @cycling_waypoints.first[0] },
+      { lat: @cycling_waypoints.last[1], lng: @cycling_waypoints.last[0] }
+    ]
   end
 
   def update
@@ -55,7 +59,7 @@ class RidesController < ApplicationController
     # set_bikes_shops_spots
     # @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
-      data = get_waypoints_alt(@ride, 'cycling')
+      data = get_waypoints(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][1]['geometry']['coordinates']
     else
       data = get_waypoints(@ride, 'cycling')
