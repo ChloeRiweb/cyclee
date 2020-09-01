@@ -9,35 +9,42 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
 };
 
-const getCurrentPosition = () => {
-  return new Promise(function(resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
-}
-
-const addMarker = async (map) => {
-  const position = await getCurrentPosition();
-  map.flyTo({
-    center: [position.coords.longitude, position.coords.latitude]
-  });
-
-  map.addControl(
-  new mapboxgl.GeolocateControl({
+const centerToPositionMarker = (map) => {
+  const geolocate = new mapboxgl.GeolocateControl({
     positionOptions: {
       enableHighAccuracy: true
     },
-      trackUserLocation: true
-    })
-  );
+    fitBoundsOptions: {
+      linear: false
+    },
+    trackUserLocation: true
+  });
+  map.addControl(geolocate);
+  map.on('load', function() {
+    geolocate.trigger();
+  });
+  geolocate.on('geolocate', function(e) {
+    map.flyTo({
+      zoom: 15,
+      center: [e.coords.longitude, e.coords.latitude]
+    });
+  });
+}
+
+const fillRideForm = (lat, lng) => {
+  navigator.geolocation.getCurrentPosition((position) => {
+    const latInput = document.getElementById('ride_origin_latitude');
+    const longInput = document.getElementById('ride_origin_longitude');
+    if (latInput) {
+      latInput.value = position.coords.latitude;
+      longInput.value = position.coords.longitude;
+    }
+  });
 }
 
 const initMapbox = () => {
-
   const mapElement = document.getElementById('map');
-
-
   if (mapElement) { // only build a map if there's a div#map to inject into
-
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
@@ -47,8 +54,6 @@ const initMapbox = () => {
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
-
-
     if (markers) {
       fillRideForm();
       // Add markers (destination)
@@ -58,33 +63,13 @@ const initMapbox = () => {
           .addTo(map);
       });
       fitMapToMarkers(map, markers);
-      // map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-      //                                   mapboxgl: mapboxgl }));
     } else {
       // Add user current location
-      addMarker(map)
-
-      map.on('load', () => {
-        const positionBtn = document.querySelector('.mapboxgl-ctrl-icon')
-        if (positionBtn) {
-          positionBtn.click();
-        }
-      })
+      centerToPositionMarker(map)
     }
   }
 };
 
-const fillRideForm = async () => {
-  const position = await getCurrentPosition();
-  const latInput = document.getElementById('ride_origin_latitude');
-  const longInput = document.getElementById('ride_origin_longitude');
-  if (latInput) {
-    latInput.value = position.coords.latitude;
-    longInput.value = position.coords.longitude;
-  }
-}
 
 
-
-
-export { initMapbox, fitMapToMarkers };
+export { initMapbox };

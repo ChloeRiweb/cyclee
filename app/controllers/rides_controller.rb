@@ -29,7 +29,7 @@ class RidesController < ApplicationController
 
   def edit
     @cycling_waypoints = get_waypoints(@ride, 'cycling')[0]['routes'][0]['geometry']['coordinates']
-    @cycling_waypoints_alt = get_waypoints_alt(@ride, 'cycling')[0]['routes'][0]['geometry']['coordinates']
+    @cycling_waypoints_alt = get_waypoints(@ride, 'cycling')[0]['routes'][1]['geometry']['coordinates']
   end
 
   def update
@@ -42,7 +42,7 @@ class RidesController < ApplicationController
     # @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
       data = get_waypoints_alt(@ride, 'cycling')
-      @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
+      @cycling_waypoints = data[0]['routes'][1]['geometry']['coordinates']
     else
       data = get_waypoints(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
@@ -62,28 +62,10 @@ class RidesController < ApplicationController
       "latitude" => ride.destination_latitude,
       "longitude" => ride.destination_longitude
     }], mode, {
-      geometries: "geojson"
-    })
-    return data
-  end
-
-  def get_waypoints_alt(ride, mode)
-    Mapbox.access_token = ENV['MAPBOX_API_KEY']
-    data = Mapbox::Directions.directions([{
-      "latitude" => ride.origin_latitude,
-      "longitude" => ride.origin_longitude
-    }, {
-      "latitude" => ride.destination_latitude,
-      "longitude" => ride.destination_longitude
-    }], mode, {
       geometries: "geojson",
       alternatives: true
     })
-    if data[0]['routes'].count > 1
-      return data
-    else
-      []
-    end
+    return data
   end
 
   def ride_params
