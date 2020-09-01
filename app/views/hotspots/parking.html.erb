@@ -5,3 +5,33 @@
   data-cycling-waypoints="<%= @cycling_waypoints.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+
+<div class="container blur-background bottom-menu">
+  <div class="blur-wrapper"></div>
+  <div class="row no-gutters justify-content-center bg-transparent">
+    <div class="edit">
+      <div class="">
+        <%= link_to  do %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalDanger" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Déclarer un parking</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'parkings/new', ride: @ride, danger: @parking %>
+      </div>
+    </div>
+  </div>
+</div>
