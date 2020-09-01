@@ -42,6 +42,13 @@ class RidesController < ApplicationController
 
   def show
     @danger = Danger.new
+    @markers_danger = @ride.dangers.map do |danger|
+      {
+        lat: danger.latitude,
+        lng: danger.longitude,
+        cat: danger.category
+      }
+    end
     # set_parkings_spots
 
     # set_pumps_spots
