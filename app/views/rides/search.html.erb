@@ -6,15 +6,15 @@
 
 
 <% if params[:query].present? %>
-  <div class="pb-3 px-3 bottom-menu">
-    <div class="p-2 d-flex flex-column align-items-center bd-highlight bg-white" style="border-radius: 30px;">
-      <p class='text-address mb-0'>Vous avez cherché:</p>
-      <p class="mb-0 text-center font-weight-light"><%= params[:query] %></p>
+  <div class="pb-3 px-3 bottom-menu recap-address">
+    <div class="d-flex flex-column align-items-center bd-highlight bg-white" style="border-radius: 20px;">
+      <p class='text-address'>Vous avez cherché:</p>
+      <p class="address text-center"><%= params[:query] %></p>
         <%= simple_form_for(@ride, html: {class: "mb-3"}) do |f| %>
           <%= f.input :origin_latitude, as: :hidden %>
           <%= f.input :origin_longitude, as: :hidden %>
           <%= f.input :destination_address, input_html: { value: params[:query]}, as: :hidden %>
-          <%= f.submit "On y va !", class: "btn btn-go" %>
+          <%= f.submit "On y va !", class: "btn btn-cyclee btn-cool" %>
         <% end %>
       <%= link_to "Je fais une nouvelle recherche", search_path  %>
     </div>

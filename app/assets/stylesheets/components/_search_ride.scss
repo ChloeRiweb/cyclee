@@ -1,0 +1,26 @@
+.recap-address {
+  > div {
+    padding: 20px 15px;
+  }
+  p {
+    font-size: 18px;
+    margin-bottom: 8px;
+    &.text-address {
+      color: $cyclee_blue_primary;
+      font-weight: 200;
+    }
+    &.address {
+    }
+  }
+  a {
+    color: #767879;
+    font-weight: 200;
+    font-style: italic;
+  }
+}
+
+
+
+#new_ride .form-group {
+  margin: 0;
+}

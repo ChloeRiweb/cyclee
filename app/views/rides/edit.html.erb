@@ -8,17 +8,17 @@
 <div class="container blur-background bottom-menu">
   <div class="blur-wrapper"></div>
   <div class="row no-gutters justify-content-center bg-transparent">
-    <div class=".d-print-inline edit">
-     <div class="form-cool">
+    <div class="edit">
+     <div class="">
       <%= simple_form_for(@ride, html: { id: "edit_ride_32_friendly"}) do |f| %>
         <%= f.input :bike_friendly, input_html: { value: true, id: "ride_bike_friendly" }, as: :hidden %>
-        <%= f.submit "J'ai le temps", class: "btn btn-cool" %>
+        <%= f.submit "J'ai le temps", class: "btn btn-cyclee btn-cool" %>
       <% end %>
     </div>
-    <div class="form-fast">
+    <div class="">
       <%= simple_form_for(@ride, html: { id: "edit_ride_32_unfriendly"}) do |f| %>
         <%= f.input :bike_friendly, input_html: { value: false, id: "ride_bike_unfriendly" }, as: :hidden %>
-        <%= f.submit "Je suis pressé.e", class: "btn btn-fast" %>
+        <%= f.submit "Je suis pressé.e", class: "btn btn-cyclee btn-fast" %>
       <% end %>
     </div>
   </div>
