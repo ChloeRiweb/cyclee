@@ -32,7 +32,6 @@ import { initTimeOutHome } from '../plugins/init_timeouthome';
 // import { validateRadio } from '../plugins/validateRadio';
 import { searchValidation } from '../components/search_validation';
 import { initMapboxParkings } from '../plugins/init_mapbox_parkings';
-import { initMapboxHotspots } from '../plugins/init_mapbox_hotspots';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -50,6 +49,5 @@ document.addEventListener('turbolinks:load', () => {
   initTimeOutHome();
   searchValidation();
   initMapboxParkings();
-  initMapboxHotspots();
   // validateRadio();
 });
