@@ -28,13 +28,17 @@ const initMapboxEdit = () => {
 
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
-      new mapboxgl.Marker()
+      const el = document.createElement('div');
+      el.className = 'marker_edit';
+
+      new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(map);
     });
 
    const departure = { lng: cyclingWaypoints[0][0], lat: cyclingWaypoints[0][1] }
    const arrival = { lng: cyclingWaypoints[cyclingWaypoints.length - 1][0], lat: cyclingWaypoints[cyclingWaypoints.length - 1][1] }
+
 
    fitMapToMarkers(map, [departure, arrival])
 
