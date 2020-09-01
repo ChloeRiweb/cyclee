@@ -2,6 +2,11 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 import { fitMapToMarkers } from './init_mapbox';
 
+const getCurrentPosition = () => {
+  return new Promise(function(resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
 
 const initMapboxParkings = () => {
 
@@ -9,8 +14,11 @@ const initMapboxParkings = () => {
 
   if (mapElement) { // only build a map if there's a div#map to inject into
 
+    fillRideForm();
+
     const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
     const parkings = JSON.parse(mapElement.dataset.parkings);
+    const rideColor = mapElement.dataset.color;
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
@@ -50,7 +58,7 @@ const initMapboxParkings = () => {
           'line-cap': 'round'
         },
         paint: {
-          'line-color': '#ef596e',
+          'line-color': rideColor,
           'line-width': 4
         }
       });
@@ -69,6 +77,16 @@ const initMapboxParkings = () => {
     }
   }
  }
+
+const fillRideForm = async () => {
+  const position = await getCurrentPosition();
+  const latInput = document.getElementById('parking_latitude');
+  const longInput = document.getElementById('parking_longitude');
+  if (latInput) {
+    latInput.value = position.coords.latitude;
+    longInput.value = position.coords.longitude;
+  }
+}
 
 
 

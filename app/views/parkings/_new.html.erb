@@ -1,0 +1,5 @@
+<%= simple_form_for [ride, parking] do |f| %>
+  <%= f.input :latitude, as: :hidden %>
+  <%= f.input :longitude, as: :hidden %>
+  <%= f.submit %>
+<% end %>

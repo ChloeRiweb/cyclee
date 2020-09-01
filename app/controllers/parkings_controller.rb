@@ -7,7 +7,7 @@ class ParkingsController < ApplicationController
   def create
     @ride = Ride.find(params[:ride_id])
     @parking = Parking.new(parking_params)
-    @parking.ride = @ride_id
+    @parking.ride = @ride
     if @parking.save!
       redirect_to search_path
     else
