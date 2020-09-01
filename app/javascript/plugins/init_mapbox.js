@@ -32,7 +32,9 @@ const centerToPositionMarker = (map) => {
 }
 
 const fillRideForm = (lat, lng) => {
+  console.log("qfsxwcqsc")
   navigator.geolocation.getCurrentPosition((position) => {
+    console.log(position)
     const latInput = document.getElementById('ride_origin_latitude');
     const longInput = document.getElementById('ride_origin_longitude');
     if (latInput) {
