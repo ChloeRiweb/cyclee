@@ -30,3 +30,16 @@
 .dropdown-toggle::after {
   display: none;
 }
+
+.dropdown-menu {
+  border-radius: 15px;
+  border: 0;
+}
+
+.dropdown-menu-right {
+  right: 25px;
+}
+
+.dropdown-item {
+  font-weight: lighter;
+}
