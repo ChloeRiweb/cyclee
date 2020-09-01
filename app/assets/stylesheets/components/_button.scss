@@ -3,26 +3,31 @@
   color: white;
 }
 
-.btn-go {
-  background-image: linear-gradient($cyclee_pink, $cyclee_orange);
-  color: $white;
+.btn-cyclee {
   text-decoration: none !important;
-  font-family: $poppins;
-  font-size: 20px;
-  text-align: center;
   border-radius: 50px;
   width: 200px;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  font-weight: 300;
+  border: 0;
+  transition: none;
+  &.btn-cool {
+    background-image: $linear-gradient;
+    color: $white;
+  }
+  &.btn-fast {
+    background-color: $white;
+    color: $cyclee_blue_primary;
+  }
 }
 
-.btn-go:hover {
-  text-decoration: none !important;
-  color: $white !important;
-}
 
 .btn-map-layers {
   width: 43px;
   border-radius: 50%;
-  background: linear-gradient($cyclee_pink, $cyclee_orange);
+  background: $linear-gradient;
   margin: 35px 15px;
   padding: 8px;
   text-align: center;
@@ -37,8 +42,14 @@
   text-align: center;
 }
 
-.btn-cool { color:white; }
-.btn-fast { color:$cyclee_blue_primary; }
+
+// .btn-go:hover {
+//   text-decoration: none !important;
+//   color: $white !important;
+// }
+
+// .btn-cool { color:white; }
+// .btn-fast { color:$cyclee_blue_primary; }
 
 .btn:focus {
   box-shadow: none;
