@@ -5,6 +5,8 @@
 
 .mapboxgl-ctrl-top-right {
   top: 70px;
+  z-index: 0;
+  right: 1rem;
 }
 
 .mapboxgl-user-location-dot {
@@ -29,7 +31,19 @@
 }
 
 a.mapboxgl-ctrl-logo, .mapboxgl-ctrl-bottom-right {
-    display: none;
+  display: none;
+
+}
+
+.mapboxgl-ctrl {
+  box-shadow: none !important;
+  margin: 0 !important;
+  border-radius: 50%;
+  height: 38px;
+  width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .marker-nid {

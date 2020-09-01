@@ -5,7 +5,7 @@ const initAutocomplete = () => {
   if (addressInput) {
     places({
       container: addressInput,
-      countries: ['fr']
+      countries: ['fr'],
     });
   }
 };
