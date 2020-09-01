@@ -12,6 +12,7 @@ const initMapboxHotspots  = () => {
       hotspots.forEach((hotspot) => {
         const el = document.createElement('div');
 
+
         el.className = `marker_${hotspot.category}`;
         new mapboxgl.Marker(el)
           .setLngLat([

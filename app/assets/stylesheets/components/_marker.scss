@@ -17,7 +17,7 @@
 }
 
 .marker_repairer {
-  background-image: url('pump_2.png');
+  background-image: url('repairer.png');
   background-size: contain;
   width: 30px;
   height: 30px;
@@ -64,4 +64,13 @@
   font-size: 16px;
   padding: 10px;
   border-radius: 10px;
+
+.marker_edit {
+  background-image: url('flag1.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  // border-radius: 50%;
+  cursor: pointer;
 }
