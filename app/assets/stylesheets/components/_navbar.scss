@@ -15,8 +15,8 @@
 #navbarSupportedContent {
   background-color: white;
   width: 38px;
+  height: 38px;
   border-radius: 50%;
-  padding: 0px 0 3px 0;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -27,6 +27,23 @@
   }
 }
 
+.dropdown-menu {
+  z-index: 2;
+}
+
 .dropdown-toggle::after {
   display: none;
+}
+
+.dropdown-menu {
+  border-radius: 15px;
+  border: 0;
+}
+
+.dropdown-menu-right {
+  right: -7px;
+}
+
+.dropdown-item {
+  font-weight: lighter;
 }

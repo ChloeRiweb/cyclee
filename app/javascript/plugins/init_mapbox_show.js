@@ -12,20 +12,32 @@ const getCurrentPosition = () => {
   });
 }
 
+const addMarker = async (map) => {
+  const position = await getCurrentPosition();
+  map.flyTo({
+    center: [position.coords.longitude, position.coords.latitude]
+  });
+}
+
 const initMapboxShow = () => {
 
   const mapElement = document.getElementById('map_show');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
+
     fillRideForm();
+
     const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
+    const markersDanger = JSON.parse(mapElement.dataset.markersDanger);
+    const zoom = mapElement.dataset.zoom ? mapElement.dataset.zoom : 13;
+    const center = mapElement.dataset.center != "" ? JSON.parse(mapElement.dataset.center) : cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)];
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map_show',
       style: 'mapbox://styles/chloeri/ckecwoto80ikm19p5q5qk4yf9',
-      center: cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)],
-      zoom: 12
+      center: center,
+      zoom: zoom
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
@@ -51,6 +63,7 @@ const initMapboxShow = () => {
           }
         }
       });
+
       map.addLayer({
         id: 'cycling',
         type: 'line',
@@ -65,6 +78,16 @@ const initMapboxShow = () => {
         }
       });
     });
+
+    if (markersDanger) {
+      markersDanger.forEach((markerDanger) => {
+        const el = document.createElement('div');
+        el.className = `marker-${markerDanger.cat}`;
+        new mapboxgl.Marker(el)
+          .setLngLat([ markerDanger.lng, markerDanger.lat ])
+          .addTo(map);
+      });
+    }
   }
 
     // addMarkersParkings(mapElement, map);

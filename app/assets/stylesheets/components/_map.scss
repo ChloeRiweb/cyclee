@@ -5,6 +5,8 @@
 
 .mapboxgl-ctrl-top-right {
   top: 70px;
+  z-index: 0;
+  right: 1rem;
 }
 
 .mapboxgl-user-location-dot {
@@ -29,6 +31,43 @@
 }
 
 a.mapboxgl-ctrl-logo, .mapboxgl-ctrl-bottom-right {
-    display: none;
+  display: none;
+
+}
+
+.mapboxgl-ctrl {
+  box-shadow: none !important;
+  margin: 0 !important;
+  border-radius: 50%;
+  height: 38px;
+  width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-nid {
+  background-image: url('pothole-road.png');
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.marker-barrees {
+  background-image: url('close-road.png');
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.marker-travaux {
+  background-image: url('construction_road.png');
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 

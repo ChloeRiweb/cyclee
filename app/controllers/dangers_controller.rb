@@ -9,7 +9,7 @@ class DangersController < ApplicationController
     @danger = Danger.new(danger_params)
     @danger.ride = @ride
     if @danger.save!
-      redirect_to ride_path(@ride)
+      redirect_to ride_path(@ride, zoom: "16", center: ["#{@danger.longitude}", "#{@danger.latitude}"])
     else
       render "danger/new"
     end
