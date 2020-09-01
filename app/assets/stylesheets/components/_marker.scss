@@ -25,6 +25,46 @@
   cursor: pointer;
 }
 
+.marker-nid {
+  background-image: url('pothole-road.png');
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.marker-barrees {
+  background-image: url('close-road.png');
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.marker-travaux {
+  background-image: url('construction_road.png');
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.marker-duration {
+  color: $cyclee_blue_primary;
+  background-color: $cyclee_blue_light;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.marker-duration-alt {
+  color: $cyclee_pink;
+  background-color: $cyclee_blue_light;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+
 .marker_edit {
   background-image: url('flag1.svg');
   background-size: contain;
