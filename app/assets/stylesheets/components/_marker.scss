@@ -1,0 +1,26 @@
+.marker_parking {
+  background-image: url('parking.png');
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  // border-radius: 50%;
+  cursor: pointer;
+}
+
+.marker_pump {
+  background-image: url('pump.png');
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  // border-radius: 50%;
+  cursor: pointer;
+}
+
+.marker_repairer {
+  background-image: url('pump_2.png');
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  // border-radius: 50%;
+  cursor: pointer;
+}

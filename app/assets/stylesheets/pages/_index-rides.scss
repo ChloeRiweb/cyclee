@@ -1,0 +1,21 @@
+.index_rides {
+  background-color: $white;
+  h3 {
+    color: $cyclee_orange;
+    margin-left: 23px;
+  };
+  li {
+    color: $cyclee_blue_primary;
+    font-weight: lighter;
+  };
+  li::marker {
+    color: $cyclee_pink;
+  };
+  a {
+    text-decoration: none;
+  };
+  p {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

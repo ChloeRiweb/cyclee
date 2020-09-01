@@ -1,5 +1,4 @@
 class ParkingsController < ApplicationController
-
   def index
     filepath = 'db/scrape/parkings_spots.json'
     @parkings_all = JSON.parse(File.read(filepath))
