@@ -15,6 +15,8 @@ const initMapboxEdit = () => {
 
     const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
     const cyclingWaypointsAlt = JSON.parse(mapElement.dataset.cyclingWaypointsAlt);
+    const duration = JSON.parse(mapElement.dataset.duration);
+    const durationAlt = JSON.parse(mapElement.dataset.durationAlt);
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
@@ -79,6 +81,25 @@ const initMapboxEdit = () => {
         }
       });
     });
+
+    if (duration) {
+        const el = document.createElement('div');
+        el.className = 'marker-duration';
+        el.innerHTML = `${duration} mins`;
+        new mapboxgl.Marker(el)
+          .setLngLat([ cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][0], cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][1]])
+          .addTo(map);
+      };
+
+    if (durationAlt) {
+        const ele = document.createElement('div');
+        ele.className = 'marker-duration-alt';
+        ele.innerHTML = `${durationAlt} mins`;
+        new mapboxgl.Marker(ele)
+          .setLngLat([ cyclingWaypointsAlt[Math.round(cyclingWaypoints.length / 2.0)][0], cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][1] ])
+          .addTo(map);
+      };
+
  }
 }
 
