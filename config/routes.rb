@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :dangers, only: [:new, :create]
     get "parking", to: "hotspots#parking"
     get "pump", to: "hotspots#pump"
+    get "repairer", to: "hotspots#repairer"
   end
 end

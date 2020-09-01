@@ -19,7 +19,6 @@ const initMapboxEdit = () => {
     const duration = JSON.parse(mapElement.dataset.duration);
     const durationAlt = JSON.parse(mapElement.dataset.durationAlt);
 
-
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map_edit',
