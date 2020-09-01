@@ -1,5 +1,5 @@
 class Hotspot < ApplicationRecord
-  CATEGORY = ['parking', 'pompe', 'réparateur', 'danger']
+  CATEGORY = ['parking', 'pump', 'repairer', 'danger']
   validates :category, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true

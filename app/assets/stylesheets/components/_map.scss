@@ -45,28 +45,3 @@ a.mapboxgl-ctrl-logo, .mapboxgl-ctrl-bottom-right {
   align-items: center;
   justify-content: center;
 }
-
-.marker-nid {
-  background-image: url('pothole.svg');
-  background-size: contain;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.marker-barrees {
-  background-image: url('route_barre.png');
-  background-size: contain;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.marker-travaux {
-  background-image: url('cone.png');
-  background-size: contain;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-}

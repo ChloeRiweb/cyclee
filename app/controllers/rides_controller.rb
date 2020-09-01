@@ -15,9 +15,6 @@ class RidesController < ApplicationController
       @markers = [{ lat: results.first.coordinates.first, lng: results.first.coordinates.last }]
       @ride = Ride.new
     end
-    # set_parkings_spots
-    # set_pumps_spots
-    # set_bikes_shops_spots
   end
 
   def create
@@ -33,6 +30,12 @@ class RidesController < ApplicationController
   def edit
     @cycling_waypoints = get_waypoints(@ride, 'cycling')[0]['routes'][0]['geometry']['coordinates']
     @cycling_waypoints_alt = get_waypoints(@ride, 'cycling')[0]['routes'][1]['geometry']['coordinates']
+    @duration = (get_waypoints(@ride, 'cycling')[0]['routes'][0]['duration'] / 60).ceil
+    @duration_alt = (get_waypoints(@ride, 'cycling')[0]['routes'][1]['duration'] / 60).ceil
+    @markers = [
+      # { lat: @cycling_waypoints.first[1], lng: @cycling_waypoints.first[0] },
+      { lat: @cycling_waypoints.last[1], lng: @cycling_waypoints.last[0] }
+    ]
   end
 
   def update
@@ -49,10 +52,6 @@ class RidesController < ApplicationController
         cat: danger.category
       }
     end
-    # set_parkings_spots
-
-    # set_pumps_spots
-    # set_bikes_shops_spots
     # @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
       data = get_waypoints(@ride, 'cycling')
@@ -61,27 +60,11 @@ class RidesController < ApplicationController
       data = get_waypoints(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
     end
-
     @duration = data[0]['routes'][0]['duration'] / 60
     @distance = data[0]['routes'][0]['distance'] / 1000
   end
 
   private
-
-  def get_waypoints(ride, mode)
-    Mapbox.access_token = ENV['MAPBOX_API_KEY']
-    data = Mapbox::Directions.directions([{
-      "latitude" => ride.origin_latitude,
-      "longitude" => ride.origin_longitude
-    }, {
-      "latitude" => ride.destination_latitude,
-      "longitude" => ride.destination_longitude
-    }], mode, {
-      geometries: "geojson",
-      alternatives: true
-    })
-    return data
-  end
 
   def ride_params
     params.require(:ride).permit(:origin_latitude, :origin_longitude, :destination_address, :destination_longitude, :destination_latitude, :bike_friendly)

@@ -1,10 +1,11 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 
+
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 15, maxZoom: 15, duration: 0 });
+  map.fitBounds(bounds, { padding: 20, maxZoom: 15, duration: 0 });
 };
 
 const initMapboxEdit = () => {
@@ -15,6 +16,9 @@ const initMapboxEdit = () => {
 
     const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
     const cyclingWaypointsAlt = JSON.parse(mapElement.dataset.cyclingWaypointsAlt);
+    const duration = JSON.parse(mapElement.dataset.duration);
+    const durationAlt = JSON.parse(mapElement.dataset.durationAlt);
+
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
@@ -24,10 +28,21 @@ const initMapboxEdit = () => {
       zoom: 12
     });
 
-    const departure = { lng: cyclingWaypoints[0][0], lat: cyclingWaypoints[0][1] }
-    const arrival = { lng: cyclingWaypoints[cyclingWaypoints.length - 1][0], lat: cyclingWaypoints[cyclingWaypoints.length - 1][1] }
+    const markers = JSON.parse(mapElement.dataset.markers);
+    markers.forEach((marker) => {
+      const el = document.createElement('div');
+      el.className = 'marker_edit';
 
-    fitMapToMarkers(map, [departure, arrival])
+      new mapboxgl.Marker(el)
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
+    });
+
+   const departure = { lng: cyclingWaypoints[0][0], lat: cyclingWaypoints[0][1] }
+   const arrival = { lng: cyclingWaypoints[cyclingWaypoints.length - 1][0], lat: cyclingWaypoints[cyclingWaypoints.length - 1][1] }
+
+
+   fitMapToMarkers(map, [departure, arrival])
 
     map.on('load', function() {
       map.addSource('cycling', {
@@ -79,6 +94,25 @@ const initMapboxEdit = () => {
         }
       });
     });
+
+    if (duration) {
+        const el = document.createElement('div');
+        el.className = 'marker-duration';
+        el.innerHTML = `${duration} mins`;
+        new mapboxgl.Marker(el)
+          .setLngLat([ cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][0], cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][1]])
+          .addTo(map);
+      };
+
+    if (durationAlt) {
+        const ele = document.createElement('div');
+        ele.className = 'marker-duration-alt';
+        ele.innerHTML = `${durationAlt} mins`;
+        new mapboxgl.Marker(ele)
+          .setLngLat([ cyclingWaypointsAlt[Math.round(cyclingWaypoints.length / 2.0)][0], cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][1] ])
+          .addTo(map);
+      };
+
  }
 }
 
