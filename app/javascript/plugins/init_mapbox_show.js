@@ -26,6 +26,7 @@ const initMapboxShow = () => {
     const markersDanger = JSON.parse(mapElement.dataset.markersDanger);
     const zoom = mapElement.dataset.zoom ? mapElement.dataset.zoom : 13;
     const center = mapElement.dataset.center != "" ? JSON.parse(mapElement.dataset.center) : cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)];
+    const rideColor = mapElement.dataset.color;
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
@@ -76,7 +77,7 @@ const initMapboxShow = () => {
           'line-cap': 'round'
         },
         paint: {
-          'line-color': '#ef596e',
+          'line-color': rideColor,
           'line-width': 4
         }
       });

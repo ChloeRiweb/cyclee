@@ -5,7 +5,8 @@
   data-center="<%= params[:center] %>"
   data-markers-danger="<%= @markers_danger.to_json %> "
   data-cycling-waypoints="<%= @cycling_waypoints.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  data-color="<%= @color %>">
 </div>
 
 <div class="blur-background bottom-menu">
