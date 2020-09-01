@@ -36,6 +36,14 @@ const initMapboxShow = () => {
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
+    markers.forEach((marker) => {
+      const el = document.createElement('div');
+      el.className = 'marker_show';
+
+      new mapboxgl.Marker(el)
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
+    });
 
     map.addControl(
       new mapboxgl.GeolocateControl({
