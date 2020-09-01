@@ -7,16 +7,19 @@ const initMapboxParkings  = () => {
   const mapElement = document.getElementById('map_parkings');
 
   const addMarkersParkings = (mapElement, map) => {
-    const parkingSpots = JSON.parse(mapElement.dataset.parkingSpots);
-    if (parkingSpots) {
-      parkingSpots.forEach((parkingSpot) => {
-        new mapboxgl.Marker()
+    const parkings = JSON.parse(mapElement.dataset.parkings);
+    if (parkings) {
+      parkings.forEach((parking) => {
+        const elt = document.createElement('div');
+        elt.className = "marker_parking";
+
+        new mapboxgl.Marker(elt)
           .setLngLat([
-            parkingSpot.lng,
-            parkingSpot.lat ])
+            parking.lng,
+            parking.lat ])
           .addTo(map);
       });
-      fitMapToMarkers(map, parkingSpots);
+      fitMapToMarkers(map, parkings);
     }
   }
 
@@ -31,8 +34,6 @@ const initMapboxParkings  = () => {
     });
 
     // const markers = JSON.parse(mapElement.dataset.markers);
-
-
     // if (markers) {
     //   fillRideForm();
     //   // Add markers (destination)
@@ -41,18 +42,11 @@ const initMapboxParkings  = () => {
     //       .setLngLat([ marker.lng, marker.lat ])
     //       .addTo(map);
     //   });
-    //   fitMapToMarkers(map, markers);
     // } else {
     //   // Add user current location
-    //   addMarker(map)
-
-    //   map.on('load', () => {
-    //     const positionBtn = document.querySelector('.mapboxgl-ctrl-icon')
-    //     if (positionBtn) {
-    //       positionBtn.click();
-    //     }
-    //   })
+    //   centerToPositionMarker(map)
     // }
+
     addMarkersParkings(mapElement, map);
   }
 };
