@@ -28,6 +28,8 @@ const initMapboxShow = () => {
       zoom: 12
     });
 
+    const markers = JSON.parse(mapElement.dataset.markers);
+
     map.addControl(
       new mapboxgl.GeolocateControl({
         positionOptions: {

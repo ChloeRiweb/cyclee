@@ -1,6 +1,8 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 
+
+
 const initMapboxEdit = () => {
 
   const mapElement = document.getElementById('map_edit');
@@ -10,12 +12,20 @@ const initMapboxEdit = () => {
     const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
     const cyclingWaypointsAlt = JSON.parse(mapElement.dataset.cyclingWaypointsAlt);
 
+
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map_edit',
       style: 'mapbox://styles/chloeri/ckecwoto80ikm19p5q5qk4yf9',
       center: cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)],
       zoom: 12
+    });
+
+    const markers = JSON.parse(mapElement.dataset.markers);
+    markers.forEach((marker) => {
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
     });
 
     map.on('load', function() {
