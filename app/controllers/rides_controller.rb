@@ -32,8 +32,11 @@ class RidesController < ApplicationController
 
   def edit
     @cycling_waypoints = get_waypoints(@ride, 'cycling')[0]['routes'][0]['geometry']['coordinates']
-    @cycling_waypoints_alt = get_waypoints_alt(@ride, 'driving')[0]['routes'][0]['geometry']['coordinates']
-    @markers = [{ lat: @cycling_waypoints.last[1], lng: @cycling_waypoints.last[0] }]
+    @cycling_waypoints_alt = get_waypoints(@ride, 'driving')[0]['routes'][1]['geometry']['coordinates']
+    @markers = [
+      { lat: @cycling_waypoints.first[1], lng: @cycling_waypoints.first[0] },
+      { lat: @cycling_waypoints.last[1], lng: @cycling_waypoints.last[0] }
+    ]
   end
 
   def update
@@ -50,7 +53,7 @@ class RidesController < ApplicationController
     # @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
       data = get_waypoints_alt(@ride, 'driving')
-      @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
+      @cycling_waypoints = data[0]['routes'][1]['geometry']['coordinates']
     else
       data = get_waypoints(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
@@ -72,28 +75,9 @@ class RidesController < ApplicationController
       "longitude" => ride.destination_longitude
     }], mode, {
       geometries: "geojson",
-      # duration: true
-    })
-    return data
-  end
-
-  def get_waypoints_alt(ride, mode)
-    Mapbox.access_token = ENV['MAPBOX_API_KEY']
-    data = Mapbox::Directions.directions([{
-      "latitude" => ride.origin_latitude,
-      "longitude" => ride.origin_longitude
-    }, {
-      "latitude" => ride.destination_latitude,
-      "longitude" => ride.destination_longitude
-    }], mode, {
-      geometries: "geojson",
       alternatives: true
     })
-    if data[0]['routes'].count > 1
-      return data
-    else
-      []
-    end
+    return data
   end
 
   def ride_params
@@ -103,22 +87,4 @@ class RidesController < ApplicationController
   def set_ride
     @ride = Ride.find(params[:id])
   end
-
-  # def set_pumps_spots
-  #   filepath = 'db/scrape/pumps_spots.yaml'
-  #   @pumps = YAML.load_file(filepath)
-  # end
-
-  # def set_bikes_shops_spots
-  #   filepath = 'db/scrape/bikes_shops_spots.yaml'
-  #   @bikes_shops = YAML.load_file(filepath)
-
-  #   @bikes_shops = @bikes_shops.map do |shop|
-  #     {
-  #       lat: shop[:latitude],
-  #       lng: shop[:longitude]
-  #       # image_url: helpers.asset_url('parking') // a creuser pour remplacer l'image du marker
-  #     }
-  #   end
-  # end
 end
