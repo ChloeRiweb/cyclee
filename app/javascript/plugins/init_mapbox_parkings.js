@@ -2,6 +2,18 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 import { fitMapToMarkers } from './init_mapbox';
 
+// const getCurrentPosition = () => {
+//   return new Promise(function(resolve, reject) {
+//     navigator.geolocation.getCurrentPosition(resolve, reject);
+//   });
+// }
+
+const addMarker = async (map) => {
+  const position = await getCurrentPosition();
+  map.flyTo({
+    center: [position.coords.longitude, position.coords.latitude]
+  });
+}
 
 const initMapboxParkings = () => {
 
@@ -17,6 +29,16 @@ const initMapboxParkings = () => {
       container: 'map_parkings',
       style: 'mapbox://styles/chloeri/ckecwoto80ikm19p5q5qk4yf9',
       zoom: 13
+    });
+
+    const markers = JSON.parse(mapElement.dataset.markers);
+    markers.forEach((marker) => {
+      const el = document.createElement('div');
+      el.className = 'marker_flag_parkings';
+
+      new mapboxgl.Marker(el)
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
     });
 
     map.addControl(
