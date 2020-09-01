@@ -15,9 +15,6 @@ class RidesController < ApplicationController
       @markers = [{ lat: results.first.coordinates.first, lng: results.first.coordinates.last }]
       @ride = Ride.new
     end
-    # set_parkings_spots
-    # set_pumps_spots
-    # set_bikes_shops_spots
   end
 
   def create
@@ -42,19 +39,14 @@ class RidesController < ApplicationController
 
   def show
     @danger = Danger.new
-    # set_parkings_spots
-
-    # set_pumps_spots
-    # set_bikes_shops_spots
     # @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
-      data = get_waypoints_alt(@ride, 'driving')
+      data = get_waypoints_alt(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
     else
       data = get_waypoints(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
     end
-
     @duration = data[0]['routes'][0]['duration'] / 60
     @distance = data[0]['routes'][0]['distance'] / 1000
   end
@@ -70,8 +62,7 @@ class RidesController < ApplicationController
       "latitude" => ride.destination_latitude,
       "longitude" => ride.destination_longitude
     }], mode, {
-      geometries: "geojson",
-      # duration: true
+      geometries: "geojson"
     })
     return data
   end
@@ -102,22 +93,4 @@ class RidesController < ApplicationController
   def set_ride
     @ride = Ride.find(params[:id])
   end
-
-  # def set_pumps_spots
-  #   filepath = 'db/scrape/pumps_spots.yaml'
-  #   @pumps = YAML.load_file(filepath)
-  # end
-
-  # def set_bikes_shops_spots
-  #   filepath = 'db/scrape/bikes_shops_spots.yaml'
-  #   @bikes_shops = YAML.load_file(filepath)
-
-  #   @bikes_shops = @bikes_shops.map do |shop|
-  #     {
-  #       lat: shop[:latitude],
-  #       lng: shop[:longitude]
-  #       # image_url: helpers.asset_url('parking') // a creuser pour remplacer l'image du marker
-  #     }
-  #   end
-  # end
 end

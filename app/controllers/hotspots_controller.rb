@@ -11,7 +11,5 @@ class HotspotsController < ApplicationController
         category: element.category
       }
     end
-
-    # raise
   end
 end
