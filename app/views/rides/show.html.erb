@@ -12,7 +12,7 @@
 <div class="blur-background bottom-menu">
   <div class="blur-wrapper"></div>
   <div class="row no-gutters d-flex justify-content-between align-items-center">
-    <div class="btn-map-layers">
+    <div class="btn-map-layers" data-toggle="modal" data-target="#modalHotspot">
       <i class="fas fa-layer-group text-white"></i>
     </div>
 
@@ -26,7 +26,29 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Hotspots-->
+<div class="modal fade" id="modalHotspot" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Afficher autour de moi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li><%= link_to "Parkings à vélo", ride_parking_path(@ride)  %></li>
+          <li><%= link_to "Pompes vélo", ride_pump_path(@ride)  %></li>
+          <li><%= link_to "Réparateurs", ride_repairer_path(@ride)  %></li>
+          <li><%= link_to "Dangers", ride_dangers_path(@ride)  %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Dangers-->
 <div class="modal fade" id="modalDanger" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">

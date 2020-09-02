@@ -1,7 +1,7 @@
 class HotspotsController < ApplicationController
   def parking
     @ride = Ride.find(params[:ride_id])
-    @parkings = Hotspot.where(category: "parking").near([@ride.destination_latitude, @ride.destination_longitude], 1, units: :km)
+    @parkings = Hotspot.where(category: "parking").near([@ride.destination_latitude, @ride.destination_longitude], 0.5, units: :km)
 
     @parkings_markers = @parkings.map do |element|
       {
