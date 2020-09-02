@@ -4,10 +4,11 @@
 }
 
 .modal-content {
-  width: 80%;
+  width: 65%;
   border-radius: 10px 10px 0 0;
   h5 {
     color: $cyclee_blue_primary;
+    margin-left: 20px;
   }
 }
 
@@ -20,6 +21,9 @@
     label {
       margin-left: 20px;
     }
+  }
+  input {
+    margin-left: 25px;
   }
 }
 
@@ -36,10 +40,14 @@
   flex-direction: column;
 }
 
-#danger_category_nid_de_poule {
+#danger_category_nid {
   margin-right: 10px;
 }
 
-#danger_category_routes_barrées {
+#danger_category_barrees {
+  margin-right: 10px;
+}
+
+#danger_category_travaux {
   margin-right: 10px;
 }

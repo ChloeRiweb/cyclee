@@ -3,6 +3,33 @@
   data-parkings="<%= @parkings_markers.to_json %>"
   data-markers="<%= @flag_marker.to_json %>"
   data-markers="<%= @markers.to_json %>"
+  data-color="<%= @color %>"
   data-cycling-waypoints="<%= @cycling_waypoints.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
+<div class="container blur-background bottom-menu">
+  <div class="blur-wrapper"></div>
+  <div class="row no-gutters justify-content-center bg-transparent">
+    <div id="post-content" data-toggle="modal" data-target="#modalParking">
+      <p class= "btn btn-cyclee btn-fast">Parking</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalParking" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Je me gare</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'parkings/new', ride: @ride, parking: @parking %>
+      </div>
+    </div>
+  </div>
 </div>
