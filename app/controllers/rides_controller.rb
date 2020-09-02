@@ -14,9 +14,9 @@ class RidesController < ApplicationController
       @address_parking = @parking.address_parking if @parking
     end
     if params[:query].present?
-      results = Geocoder.search(params[:query])
-      @markers = [{ lat: results.first.coordinates.first, lng: results.first.coordinates.last }]
+      result = Geocoder.search(params[:query]).first.coordinates
       @ride = Ride.new
+      @markers = [{ lat: result.first, lng: result.last }]
     end
   end
 

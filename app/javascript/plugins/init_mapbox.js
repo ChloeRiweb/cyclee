@@ -60,7 +60,10 @@ const initMapbox = () => {
       fillRideForm();
       // Add markers (destination)
       markers.forEach((marker) => {
-        new mapboxgl.Marker()
+      const el = document.createElement('div');
+      el.className = 'marker_result_search';
+
+        new mapboxgl.Marker(el)
           .setLngLat([ marker.lng, marker.lat ])
           .addTo(map);
       });
