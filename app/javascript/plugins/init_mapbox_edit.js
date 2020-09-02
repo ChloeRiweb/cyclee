@@ -123,16 +123,16 @@ const initMapboxEdit = () => {
     if (duration) {
         const el = document.createElement('div');
         el.className = 'marker-duration';
-        el.innerHTML = `${duration} mins`;
+        el.innerHTML = `${duration} min`;
         new mapboxgl.Marker(el)
-          .setLngLat([ cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][0], cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][1]])
+          .setLngLat([ cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][0], cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][1] ])
           .addTo(map);
       };
 
     if (durationAlt) {
         const ele = document.createElement('div');
         ele.className = 'marker-duration-alt';
-        ele.innerHTML = `${durationAlt} mins`;
+        ele.innerHTML = `${durationAlt} min`;
         new mapboxgl.Marker(ele)
           .setLngLat([ cyclingWaypointsAlt[Math.round(cyclingWaypoints.length / 2.0)][0], cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][1] ])
           .addTo(map);
