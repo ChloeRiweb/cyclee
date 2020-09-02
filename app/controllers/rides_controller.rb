@@ -5,7 +5,7 @@ class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update]
 
   def index
-    @rides = Ride.select(:destination_address).map(&:destination_address).uniq
+    @rides = Ride.select(:destination_address).order(created_at: :desc).map(&:destination_address).uniq
   end
 
   def search
@@ -14,9 +14,9 @@ class RidesController < ApplicationController
       @address_parking = @parking.address_parking if @parking
     end
     if params[:query].present?
-      results = Geocoder.search(params[:query])
-      @markers = [{ lat: results.first.coordinates.first, lng: results.first.coordinates.last }]
+      result = Geocoder.search(params[:query]).first.coordinates
       @ride = Ride.new
+      @markers = [{ lat: result.first, lng: result.last }]
     end
   end
 
@@ -31,6 +31,8 @@ class RidesController < ApplicationController
   end
 
   def edit
+    @back_path = search_path
+
     waypoints = get_waypoints(@ride, 'cycling')
     @cycling_waypoints = get_waypoints(@ride, 'cycling')[0]['routes'][0]['geometry']['coordinates']
     @duration = (get_waypoints(@ride, 'cycling')[0]['routes'][0]['duration'] / 60).ceil
@@ -50,6 +52,8 @@ class RidesController < ApplicationController
   end
 
   def show
+    @back_path = edit_ride_path(@ride)
+
     @markers = [
       # { lat: @ride.origin_latitude, lng: @ride.origin_longitude, className: 'marker_origin' },
       { lat: @ride.destination_latitude, lng: @ride.destination_longitude, className: 'marker_show' }

@@ -1,7 +1,15 @@
 <%= simple_form_for [ride, danger] do |f| %>
-  <%= f.collection_radio_buttons :category, [["nid", "Nid de poule"], ["travaux", "Travaux"], ["barrees", "Routes barrées"]], :first, :last, class: "mr-3" %>
+  <%#= f.collection_radio_buttons :category, [["nid", "Nid de poule"], ["travaux", "Travaux"], ["barrees", "Routes barrées"]], :first, :last, class: "mr-3" %>
+
+  <% [["nid", "Nid de poule"], ["travaux", "Travaux"], ["barrees", "Routes barrées"]].each do |(value, label)| %>
+    <div class="d-flex align-items-center mb-3">
+      <input type="radio" value="<%= value %>" name="danger[category]" id="danger_category_<%= value %>">
+      <label class="collection_radio_buttons" for="danger_category_<%= value %>"><%= label %></label>
+      <div class="danger-icon-<%= value %>"></div>
+    </div>
+  <% end %>
   <%= f.input :latitude, as: :hidden %>
   <%= f.input :longitude, as: :hidden %>
-  <%= f.submit %>
+  <%= f.submit "Déclarer", class: "btn btn-cyclee btn-cool" %>
 <% end %>
 
