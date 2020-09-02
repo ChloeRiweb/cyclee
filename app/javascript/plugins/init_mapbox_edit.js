@@ -1,6 +1,6 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
-import { centerToPositionMarker } from './init_mapbox';
+// import { centerToPositionMarker } from './init_mapbox';
 
 
 const fitMapToMarkers = (map, markers) => {
@@ -9,6 +9,23 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 20, maxZoom: 12, duration: 0 });
 };
 
+const centerToPositionMarker = (map) => {
+  const geolocate = new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    fitBoundsOptions: {
+      linear: false
+    },
+    trackUserLocation: true
+  });
+  map.addControl(geolocate);
+  map.on('load', function() {
+    geolocate.trigger();
+  });
+
+  return geolocate;
+}
 
 
 const initMapboxEdit = () => {
@@ -44,8 +61,13 @@ const initMapboxEdit = () => {
    const arrival = { lng: cyclingWaypoints[cyclingWaypoints.length - 1][0], lat: cyclingWaypoints[cyclingWaypoints.length - 1][1] }
 
 
-   fitMapToMarkers(map, [departure, arrival]);
-   centerToPositionMarker(map);
+    fitMapToMarkers(map, [departure, arrival]);
+    const geolocate = centerToPositionMarker(map);
+
+    // prevent focus on our geocoded location
+    geolocate.on('geolocate', function(e) {
+      fitMapToMarkers(map, [departure, arrival]);
+    });
 
     map.on('load', function() {
       map.addSource('cycling', {
