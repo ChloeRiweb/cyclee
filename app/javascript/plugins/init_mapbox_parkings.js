@@ -28,7 +28,7 @@ const initMapboxParkings = () => {
     const map = new mapboxgl.Map({
       container: 'map_parkings',
       style: 'mapbox://styles/chloeri/ckecwoto80ikm19p5q5qk4yf9',
-      zoom: 20
+      zoom: 13
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);

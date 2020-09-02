@@ -1,6 +1,6 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
-import { fitMapToMarkers } from './init_mapbox';
+import { fitMapToMarkers, centerToPositionMarker } from './init_mapbox';
 
 
 const initMapboxPumps = () => {
@@ -66,6 +66,7 @@ const initMapboxPumps = () => {
           .addTo(map);
       });
       fitMapToMarkers(map, pumps);
+      centerToPositionMarker(map);
     }
   }
  }
