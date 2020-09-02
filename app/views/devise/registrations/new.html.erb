@@ -1,32 +1,35 @@
-<div class="container">
+<div class="container col-6">
   <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+    <div class="d-flex justify-content-center">
       <h2>Sign up</h2>
+    </div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <div class="signup">
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password, required: false, placeholder: "••••••" ,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation, required: false, placeholder: "••••••" ,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in", class: "btn btn-primary"  %>
-  </div>
-<% end %>
-<div class="link-log">
-<%= render "devise/shared/links" %>
-</div>
+        <div class="form-inputs ">
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :password, required: false, placeholder: "••••••" ,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation, required: false, placeholder: "••••••" ,
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+        </div>
+
+        <div class="form-actions d-flex justify-content-center">
+          <%= f.button :submit, "Sign in", class: "btn btn-cyclee btn-cool"  %>
+        </div>
+      <% end %>
+    </div>
+    <div class="link-log">
+      <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>
