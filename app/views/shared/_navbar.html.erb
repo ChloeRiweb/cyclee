@@ -1,14 +1,22 @@
-<div class="navbar navbar-expand-sm navbar-lewagon">
-   <div id="navbarSupportedContent">
-      <div class="nav-item dropdown">
-        <p class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-bars"></i>
-        </p>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Profil", "#", class: "dropdown-item" %>
-          <%= link_to "Mes recherches", rides_path, class: "dropdown-item" %>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-        </div>
+<div class="navbar navbar-expand-sm navbar-lewagon justify-content-between">
+  <div class="retour">
+    <% if controller_name == "rides" && action_name == "edit" || action_name == "show"  %>
+      <%= link_to search_path do  %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+    <% end %>
+
+  </div>
+  <div id="navbarSupportedContent">
+    <div class="nav-item dropdown">
+      <p class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </p>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <%= link_to "Profil", "#", class: "dropdown-item" %>
+        <%= link_to "Mes recherches", rides_path, class: "dropdown-item" %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       </div>
+    </div>
   </div>
 </div>
