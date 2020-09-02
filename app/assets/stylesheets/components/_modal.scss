@@ -1,6 +1,26 @@
-.modal {
-  top: 200px;
+#modalDanger {
+  top: 175px;
   left: 25px;
+}
+
+#modalHotspot {
+  top: 196px;
+  left: 25px;
+  ul {
+    list-style-type: none;
+    color: $cyclee_blue_primary;
+  }
+  li {
+    text-decoration: none;
+  }
+}
+
+#modalParking {
+  top: 240px;
+  left: 25px;
+  input:last-child {
+    margin-left: 30px;
+  }
 }
 
 .modal-content {
@@ -15,6 +35,8 @@
 #new_danger {
   margin-left: 20px;
   margin-right: 20px;
+  display: flex;
+  flex-direction: column;
   span {
     margin-bottom: 10px;
     color: $cyclee_blue_primary;
@@ -22,8 +44,8 @@
       margin-left: 20px;
     }
   }
-  input {
-    margin-left: 10px;
+  input:last-child {
+    margin-left: 12px;
   }
 }
 
@@ -35,19 +57,73 @@
   margin: 0px;
 }
 
-#new_danger {
-  display: flex;
-  flex-direction: column;
-}
-
 #danger_category_nid {
   margin-right: 10px;
+  margin-left: 15px;
 }
 
 #danger_category_barrees {
   margin-right: 10px;
+  margin-left: 15px;
 }
 
 #danger_category_travaux {
   margin-right: 10px;
+  margin-left: 15px;
+}
+
+.affiche {
+  margin-left: 35px;
+}
+
+.AffiParking {
+  background-image: asset-url('parking.png');
+  height: 33px;
+  width: 33px;
+  background-size: cover;
+  margin: 10px 20px;
+}
+
+.AffiRepair {
+  background-image: asset-url('repair.png');
+  height: 30px;
+  width: 30px;
+  background-size: cover;
+  margin: 10px 20px;
+}
+
+.AffiPump {
+  background-image: asset-url('pump.png');
+  height: 30px;
+  width: 30px;
+  background-size: cover;
+  margin: 10px 20px;
+}
+
+.collection_radio_buttons {
+  margin: 0;
+}
+
+.danger-icon-nid {
+  background-image: asset-url('pothole.svg');
+  height: 30px;
+  width: 30px;
+  background-size: cover;
+  margin-left: 10px;
+}
+
+.danger-icon-travaux {
+  background-image: asset-url('cone.png');
+  height: 30px;
+  width: 30px;
+  background-size: cover;
+  margin-left: 10px;
+}
+
+.danger-icon-barrees {
+  background-image: asset-url('route_barre.png');
+  height: 30px;
+  width: 30px;
+  background-size: cover;
+  margin-left: 10px;
 }
