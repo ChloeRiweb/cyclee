@@ -28,6 +28,8 @@ class RidesController < ApplicationController
   end
 
   def edit
+    @back_path = search_path
+
     waypoints = get_waypoints(@ride, 'cycling')
     @cycling_waypoints = get_waypoints(@ride, 'cycling')[0]['routes'][0]['geometry']['coordinates']
     @duration = (get_waypoints(@ride, 'cycling')[0]['routes'][0]['duration'] / 60).ceil
@@ -47,6 +49,8 @@ class RidesController < ApplicationController
   end
 
   def show
+    @back_path = edit_ride_path(@ride)
+
     @markers = [
       # { lat: @ride.origin_latitude, lng: @ride.origin_longitude, className: 'marker_origin' },
       { lat: @ride.destination_latitude, lng: @ride.destination_longitude, className: 'marker_show' }
