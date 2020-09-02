@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :rides, only: [:index, :create, :show, :edit, :update] do
     resources :dangers, only: [:new, :create]
-    resources :parking, only: [:new, :create]
+    resources :parkings, only: [:new, :create, :index]
     get "parking", to: "hotspots#parking"
     get "pump", to: "hotspots#pump"
   end

@@ -9,6 +9,10 @@ class RidesController < ApplicationController
   end
 
   def search
+    @last_ride = current_user.rides.last
+    @parking = @last_ride.parking
+    results = Geocoder.search([@parking.latitude, @parking.longitude])
+    @address_parking = results.first.address
     if params[:query].present?
       results = Geocoder.search(params[:query])
       # @ride = Ride.create(destination_address: params[:query])
