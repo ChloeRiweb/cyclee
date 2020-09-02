@@ -11,7 +11,6 @@ class HotspotsController < ApplicationController
         category: element.category
       }
     end
-    
     @flag_marker = [{ lat: @ride.destination_latitude, lng: @ride.destination_longitude }]
     ride_infos
   end
