@@ -71,14 +71,17 @@ class RidesController < ApplicationController
     if @ride.bike_friendly
       data = get_waypoints(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][1]['geometry']['coordinates']
+      @duration = (data[0]['routes'][1]['duration'] / 60).ceil
+      @distance = data[0]['routes'][1]['distance'] / 1000
       @color = '#ef596e'
     else
       data = get_waypoints(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
+      @duration = (data[0]['routes'][0]['duration'] / 60).ceil
+      @distance = data[0]['routes'][0]['distance'] / 1000
       @color = '#193c60'
     end
-    @duration = data[0]['routes'][0]['duration'] / 60
-    @distance = data[0]['routes'][0]['distance'] / 1000
+
   end
 
   private

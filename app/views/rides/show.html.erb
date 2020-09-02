@@ -3,7 +3,8 @@
   data-markers="<%= @markers.to_json %>"
   data-zoom="<%= params[:zoom] %>"
   data-center="<%= params[:center] %>"
-  data-markers-danger="<%= @markers_danger.to_json %> "
+  data-markers-danger="<%= @markers_danger.to_json %>"
+  data-duration="<%= @duration.to_json %>"
   data-cycling-waypoints="<%= @cycling_waypoints.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   data-color="<%= @color %>">
@@ -17,7 +18,7 @@
     </div>
 
       <div class="time font-weight-light">
-        <%= @duration.round %> mins - <%= @distance.truncate(2) %> kms
+        <%= @duration.round %> min - <%= @distance.truncate(2) %> kms
       </div>
 
     <div id="post-content" data-toggle="modal" data-target="#modalDanger">
