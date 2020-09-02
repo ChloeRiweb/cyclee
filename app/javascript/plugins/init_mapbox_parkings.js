@@ -5,13 +5,15 @@ import { fitMapToMarkers } from './init_mapbox';
 const getCurrentPosition = () => {
   return new Promise(function(resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
 
 const addMarker = async (map) => {
   const position = await getCurrentPosition();
   map.flyTo({
     center: [position.coords.longitude, position.coords.latitude]
-  });
-}
+    });
+  }
 
 const initMapboxParkings = () => {
 
@@ -79,7 +81,7 @@ const initMapboxParkings = () => {
       });
     });
 
-// Add parking markers to the map
+    // Add parking markers to the map
     if (parkings) {
       parkings.forEach((parking) => {
         const el = document.createElement('div');
@@ -92,7 +94,7 @@ const initMapboxParkings = () => {
       map.setZoom(17);
     }
   }
- }
+}
 
 const fillRideForm = async () => {
   const position = await getCurrentPosition();
