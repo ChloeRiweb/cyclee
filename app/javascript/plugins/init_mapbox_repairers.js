@@ -3,18 +3,18 @@ import mapboxgl from 'mapbox-gl';
 import { fitMapToMarkers, centerToPositionMarker } from './init_mapbox';
 
 
-const initMapboxPumps = () => {
+const initMapboxRepairers = () => {
 
-  const mapElement = document.getElementById('map_pumps');
+  const mapElement = document.getElementById('map_repairers');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
 
     const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
-    const pumps = JSON.parse(mapElement.dataset.pumps);
+    const repairers = JSON.parse(mapElement.dataset.repairers);
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
-      container: 'map_pumps',
+      container: 'map_repairers',
       style: 'mapbox://styles/chloeri/ckecwoto80ikm19p5q5qk4yf9',
       zoom: 13
     });
@@ -56,19 +56,20 @@ const initMapboxPumps = () => {
       });
     });
 
-// Add pump markers to the map
-    if (pumps) {
-      pumps.forEach((pump) => {
+// Add repairer markers to the map
+    if (repairers) {
+      repairers.forEach((repairer) => {
         const el = document.createElement('div');
-        el.className = "marker_pump";
+        el.className = "marker_repairer";
         new mapboxgl.Marker(el)
-          .setLngLat([ pump.lng, pump.lat ])
+          .setLngLat([ repairer.lng, repairer.lat ])
           .addTo(map);
       });
-      fitMapToMarkers(map, pumps);
+      fitMapToMarkers(map, repairers);
       centerToPositionMarker(map);
+
     }
   }
  }
 
-export { initMapboxPumps };
+export { initMapboxRepairers };

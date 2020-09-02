@@ -6,7 +6,7 @@ import mapboxgl from 'mapbox-gl';
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  map.fitBounds(bounds, { padding: 70, maxZoom: 12, duration: 0 });
 };
 
 const centerToPositionMarker = (map) => {
@@ -32,7 +32,9 @@ const centerToPositionMarker = (map) => {
 }
 
 const fillRideForm = (lat, lng) => {
+  console.log("qfsxwcqsc")
   navigator.geolocation.getCurrentPosition((position) => {
+    console.log(position)
     const latInput = document.getElementById('ride_origin_latitude');
     const longInput = document.getElementById('ride_origin_longitude');
     if (latInput) {
@@ -72,4 +74,4 @@ const initMapbox = () => {
 
 
 
-export { initMapbox, fitMapToMarkers };
+export { initMapbox, fitMapToMarkers, centerToPositionMarker };

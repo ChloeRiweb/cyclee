@@ -2,9 +2,25 @@ class HotspotsController < ApplicationController
   def parking
     @ride = Ride.find(params[:ride_id])
     @parking = Parking.new
-    @parkings = Hotspot.where(category: "parking").near([@ride.destination_latitude, @ride.destination_longitude], 1, units: :km)
+    @parkings = Hotspot.where(category: "parking").near([@ride.destination_latitude, @ride.destination_longitude], 0.5, units: :km)
 
     @parkings_markers = @parkings.map do |element|
+      {
+        lat: element.latitude,
+        lng: element.longitude,
+        category: element.category
+      }
+    end
+    
+    @flag_marker = [{ lat: @ride.destination_latitude, lng: @ride.destination_longitude }]
+    ride_infos
+  end
+
+  def pump
+    @ride = Ride.find(params[:ride_id])
+    @pumps = Hotspot.where(category: "pump")
+
+    @pumps_markers = @pumps.map do |element|
       {
         lat: element.latitude,
         lng: element.longitude,
@@ -14,17 +30,16 @@ class HotspotsController < ApplicationController
     ride_infos
   end
 
-  def pump
+  def repairer
     @ride = Ride.find(params[:ride_id])
-        @pumps = Hotspot.where(category: "pump")
-
-        @pumps_markers = @pumps.map do |element|
-          {
-            lat: element.latitude,
-            lng: element.longitude,
-            category: element.category
-          }
-        end
+    @repairers = Hotspot.where(category: "repairer").near([@ride.destination_latitude, @ride.destination_longitude], 3, units: :km)
+    @repairers_markers = @repairers.map do |element|
+      {
+        lat: element.latitude,
+        lng: element.longitude,
+        category: element.category
+      }
+    end
     ride_infos
   end
 

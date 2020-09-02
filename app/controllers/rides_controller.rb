@@ -31,10 +31,13 @@ class RidesController < ApplicationController
   end
 
   def edit
+    waypoints = get_waypoints(@ride, 'cycling')
     @cycling_waypoints = get_waypoints(@ride, 'cycling')[0]['routes'][0]['geometry']['coordinates']
-    @cycling_waypoints_alt = get_waypoints(@ride, 'cycling')[0]['routes'][1]['geometry']['coordinates']
     @duration = (get_waypoints(@ride, 'cycling')[0]['routes'][0]['duration'] / 60).ceil
-    @duration_alt = (get_waypoints(@ride, 'cycling')[0]['routes'][1]['duration'] / 60).ceil
+    if waypoints[0]['routes'].length > 1
+      @cycling_waypoints_alt = get_waypoints(@ride, 'cycling')[0]['routes'][1]['geometry']['coordinates']
+      @duration_alt = (get_waypoints(@ride, 'cycling')[0]['routes'][1]['duration'] / 60).ceil
+    end
     @markers = [
       # { lat: @cycling_waypoints.first[1], lng: @cycling_waypoints.first[0] },
       { lat: @cycling_waypoints.last[1], lng: @cycling_waypoints.last[0] }
@@ -47,7 +50,10 @@ class RidesController < ApplicationController
   end
 
   def show
-    @markers = [{ lat: @ride.destination_latitude, lng: @ride.destination_longitude }]
+    @markers = [
+      # { lat: @ride.origin_latitude, lng: @ride.origin_longitude, className: 'marker_origin' },
+      { lat: @ride.destination_latitude, lng: @ride.destination_longitude, className: 'marker_show' }
+    ]
     @danger = Danger.new
     @markers_danger = @ride.dangers.map do |danger|
       {
