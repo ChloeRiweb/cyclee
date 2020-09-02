@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "search", to: "rides#search"
 
   resources :rides, only: [:index, :create, :show, :edit, :update] do
-    resources :dangers, only: [:new, :create]
+    resources :dangers, only: [:index, :new, :create]
     get "parking", to: "hotspots#parking"
     get "pump", to: "hotspots#pump"
     get "repairer", to: "hotspots#repairer"

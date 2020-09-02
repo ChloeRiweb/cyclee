@@ -1,4 +1,8 @@
 class DangersController < ApplicationController
+  def index
+    @dangers = Danger.all
+  end
+
   def new
     @ride = Ride.find(params[:ride_id])
     @danger = Danger.new
