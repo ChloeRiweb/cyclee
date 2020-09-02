@@ -66,12 +66,16 @@
   border-radius: 10px;
 }
 
-.marker_edit, .marker_show, .marker_flag_parkings {
-  background-image: url('flag1.svg');
+.marker_edit, .marker_show, .marker_flag_parkings, .marker_origin {
+  background-image: asset-url('flag1.svg');
   background-size: contain;
   background-repeat: no-repeat;
   width: 100px;
   height: 100px;
   // border-radius: 50%;
   cursor: pointer;
+}
+
+.marker_origin {
+  background-image: asset-url('cone.png');
 }

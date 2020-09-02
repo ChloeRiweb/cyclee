@@ -1,5 +1,7 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
+import { centerToPositionMarker } from './init_mapbox';
+
 
 const getCurrentPosition = () => {
   return new Promise(function(resolve, reject) {
@@ -39,21 +41,14 @@ const initMapboxShow = () => {
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
       const el = document.createElement('div');
-      el.className = 'marker_show';
+      el.className = marker.className;
 
       new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(map);
     });
 
-    map.addControl(
-      new mapboxgl.GeolocateControl({
-        positionOptions: {
-        enableHighAccuracy: true
-        },
-        trackUserLocation: true
-      })
-    );
+    centerToPositionMarker(map);
 
     map.on('load', function() {
       map.addSource('cycling', {

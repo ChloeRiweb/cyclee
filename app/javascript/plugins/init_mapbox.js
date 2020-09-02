@@ -74,4 +74,4 @@ const initMapbox = () => {
 
 
 
-export { initMapbox, fitMapToMarkers };
+export { initMapbox, fitMapToMarkers, centerToPositionMarker };

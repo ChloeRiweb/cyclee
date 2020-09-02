@@ -47,7 +47,10 @@ class RidesController < ApplicationController
   end
 
   def show
-    @markers = [{ lat: @ride.destination_latitude, lng: @ride.destination_longitude }]
+    @markers = [
+      # { lat: @ride.origin_latitude, lng: @ride.origin_longitude, className: 'marker_origin' },
+      { lat: @ride.destination_latitude, lng: @ride.destination_longitude, className: 'marker_show' }
+    ]
     @danger = Danger.new
     @markers_danger = @ride.dangers.map do |danger|
       {
