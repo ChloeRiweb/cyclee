@@ -5,7 +5,7 @@ class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update]
 
   def index
-    @rides = Ride.select(:destination_address).map(&:destination_address).uniq
+    @rides = Ride.select(:destination_address).order(created_at: :desc).map(&:destination_address).uniq
   end
 
   def search
