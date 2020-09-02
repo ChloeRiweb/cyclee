@@ -5,6 +5,7 @@ class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update]
 
   def index
+    @back_path = search_path
     @rides = Ride.select(:destination_address).order(created_at: :desc).map(&:destination_address).uniq
   end
 
