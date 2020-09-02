@@ -15,6 +15,9 @@ class ParkingsController < ApplicationController
     end
   end
 
+  def index
+  end
+
   private
 
   def parking_params
