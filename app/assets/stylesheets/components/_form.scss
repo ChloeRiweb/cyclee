@@ -137,10 +137,10 @@
     display: none;
   }
 
-.ap-input-icon svg {
-  top: 0;
-  right: -250%;
-}
+  .ap-input-icon svg {
+    top: 0;
+    right: -250%;
+  }
 
   span#algolia-places-listbox-0 {
     top: auto !important;
@@ -157,6 +157,14 @@
 
     .ap-dataset-places {
       border-radius: 50px;
+    }
+
+    .ap-address {
+      color: #6e6d6d;
+    }
+
+    .ap-suggestion-icon {
+      color: #6e6d6d;
     }
   }
 }
