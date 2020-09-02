@@ -82,7 +82,7 @@ const initMapboxShow = () => {
       markersDanger.forEach((markerDanger) => {
         const el = document.createElement('div');
         el.className = `marker-${markerDanger.cat}`;
-        new mapboxgl.Marker(el)
+        new mapboxgl.Marker(el, {offset: [20, 20]})
           .setLngLat([ markerDanger.lng, markerDanger.lat ])
           .addTo(map);
       });

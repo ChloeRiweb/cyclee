@@ -6,7 +6,7 @@ class RidesController < ApplicationController
 
   def index
     @back_path = search_path
-    @rides = Ride.select(:destination_address).map(&:destination_address).uniq
+    @rides = Ride.select(:destination_address).order(created_at: :desc).map(&:destination_address).uniq
   end
 
   def search
