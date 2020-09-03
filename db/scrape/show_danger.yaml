@@ -1,0 +1,51 @@
+# 21 Passage Charles Dallery
+- :category: "barrees"
+  :latitude: 48.855393
+  :longitude: 2.377653
+  :ride_id: 1
+# 24 Rue de Turenne
+- :category: "barrees"
+  :latitude: 48.856901
+  :longitude: 2.364303
+  :ride_id: 1
+# 70 Rue Gay-Lussac
+- :category: "travaux"
+  :latitude: 48.841390
+  :longitude: 2.343548
+  :ride_id: 1
+# 41 Rue Saint-Paul
+- :category: "travaux"
+  :latitude: 48.854148
+  :longitude: 2.362258
+  :ride_id: 1
+# 14 Rue Boutarel
+- :category: "travaux"
+  :latitude: 48.852224
+  :longitude: 2.353722
+  :ride_id: 1
+# 43 rue du Château d'Eau
+- :category: "travaux"
+  :latitude: 48.871544
+  :longitude: 2.357343
+  :ride_id: 1
+# 12 Rue Lacharrière
+- :category: "nid"
+  :latitude: 48.861642
+  :longitude: 2.377265
+  :ride_id: 1
+# 44 Rue Popincourt
+- :category: "nid"
+  :latitude: 48.859496
+  :longitude: 2.375893
+  :ride_id: 1
+# 43 Rue Réaumur
+- :category: "nid"
+  :latitude: 48.865927
+  :longitude: 2.353829
+  :ride_id: 1
+# 14 Rue du Colonel Driant
+- :category: "nid"
+  :latitude: 48.863521
+  :longitude: 2.339730
+  :ride_id: 1
+
