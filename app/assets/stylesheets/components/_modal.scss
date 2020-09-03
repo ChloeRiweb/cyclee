@@ -13,42 +13,11 @@
   }
 }
 
-// #modalDanger {
-//   top: 175px;
-//   left: 25px;
-// }
-
-// #modalHotspot {
-//   top: 196px;
-//   left: 25px;
-//   ul {
-//     list-style-type: none;
-//     color: $cyclee_blue_primary;
-//   }
-//   li {
-//     text-decoration: none;
-//   }
-// }
-
-// #modalParking {
-//   top: 240px;
-//   left: 25px;
-//   input:last-child {
-//    margin-left: 30px;
-//   }
-// }
-
 .modal-content {
-  // width: 85%;
-  // border-radius: 10px 10px 0 0;
   text-align: center;
   h5 {
     color: $cyclee_blue_primary;
   }
-  // .btn-cyclee.btn-cool {
-  //   margin-left: 15px;
-  // }
-
   .modal-body {
     p {
       margin-top: 0;
@@ -60,9 +29,9 @@
 }
 
 
-  .modal-title {
-    margin-left: 20px;
-  }
+.modal-title {
+  margin-left: 20px;
+}
 
 #new_danger {
   margin-left: 20px;
@@ -94,11 +63,6 @@
 #danger_category_nid , #danger_category_barrees , #danger_category_travaux {
   background-color: $cyclee_purple;
 }
-
-// [type="radio"]:checked label {
-//   text-decoration: underline;
-// }
-
 
 .AffiParking {
   background-image: asset-url('parking.png');
@@ -169,3 +133,15 @@ label.collection_radio_buttons {
   width: 30px;
   background-size: cover;
 }
+
+#instructions {
+  overflow-y: scroll;
+  max-height: 510px;
+  text-align: left;
+  li {
+    text-align: left;
+    margin-left: 20px;
+    color: $cyclee_blue_primary;
+  }
+}
+
