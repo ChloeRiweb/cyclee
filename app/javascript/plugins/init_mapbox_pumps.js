@@ -16,11 +16,11 @@ const fitMapToMarkersAndCurrentPosition = (map, markers) => {
   map.on('load', function() {
     geolocate.trigger();
   });
-  console.log("azeqfs")
-  geolocate.on('geolocate', function(e) {
+  const closestPumps = markers.slice(0, 3)
+  geolocate.on('geolocate', function(event) {
     const bounds = new mapboxgl.LngLatBounds();
-    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-    bounds.extend([e.coords.longitude, e.coords.latitude])
+    closestPumps.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+    bounds.extend([event.coords.longitude, event.coords.latitude])
     map.fitBounds(bounds, { padding: 80, maxZoom: 15, duration: 0 });
   });
 };
