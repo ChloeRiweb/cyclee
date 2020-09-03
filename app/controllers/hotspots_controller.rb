@@ -63,6 +63,7 @@ class HotspotsController < ApplicationController
       @color = '#193c60'
       @steps = data[0]['routes'][0]['legs'][0]['steps']
     end
+  end
 
   def set_ride
     @ride = Ride.find(params[:ride_id])

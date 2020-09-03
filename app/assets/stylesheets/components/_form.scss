@@ -20,12 +20,15 @@
   background: white;
   padding: 10px 20px;
   margin-top: 50px;
-  border-radius: 3px;
+  border-radius: 20px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  label {
+  color: $cyclee_blue_primary;
+}
 }
 
-.link-log {
-  padding-left: 21px;
+.form-control {
+  border-radius: 20px;
 }
 
 .bottom-menu {
@@ -130,6 +133,9 @@
         }
       }
     }
+  }
+  span {
+    padding-right: 0px !important;
   }
 
   // algolia pimpage
