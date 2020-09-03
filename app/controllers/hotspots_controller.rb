@@ -20,8 +20,8 @@ class HotspotsController < ApplicationController
   end
 
   def pump
-
-    @pumps = Hotspot.where(category: "pump")
+    @ride = Ride.find(params[:ride_id])
+    @pumps = Hotspot.where(category: "pump").near([@ride.origin_latitude, @ride.origin_longitude], 10, units: :km).first(3)
 
     @pumps_markers = @pumps.map do |element|
       {
