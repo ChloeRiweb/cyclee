@@ -49,4 +49,7 @@ a.mapboxgl-ctrl-logo, .mapboxgl-ctrl-bottom-right {
 #instructions {
   overflow-y: scroll;
   max-height: 510px;
+  li::marker {
+    list-style-type: disc;
+  }
 }
