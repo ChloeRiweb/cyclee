@@ -72,14 +72,14 @@
   margin: 0px;
 }
 
+
 #danger_category_nid , #danger_category_barrees , #danger_category_travaux {
-  margin-right: 10px;
   background-color: $cyclee_purple;
 }
 
-[type="radio"]:checked + label {
-  color: $cyclee_purple;
-}
+// [type="radio"]:checked label {
+//   text-decoration: underline;
+// }
 
 
 .AffiParking {
@@ -107,8 +107,20 @@
 }
 
 .collection_radio_buttons {
-  margin: 0;
+  margin-left: 20px;
+  color: $cyclee_blue_primary;
+  &:label {
+    margin-bottom: 0;
+  }
 }
+
+label.collection_radio_buttons {
+  margin-bottom: 0;
+  &:active {
+    text-decoration: underline;
+  }
+}
+
 
 .danger-icon-nid {
   background-image: asset-url('pothole.svg');
@@ -116,7 +128,6 @@
   width: 30px;
   background-size: contain;
   background-repeat: no-repeat;
-  margin-left: 10px;
 }
 
 .danger-icon-travaux {
@@ -124,7 +135,6 @@
   height: 30px;
   width: 30px;
   background-size: cover;
-  margin-left: 10px;
 }
 
 .danger-icon-barrees {
@@ -132,5 +142,4 @@
   height: 30px;
   width: 30px;
   background-size: cover;
-  margin-left: 10px;
 }
