@@ -1,6 +1,6 @@
 <div class="container col-6">
   <div class="row justify-content-center">
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" style="padding-top: 40px">
       <h2>Sign up</h2>
     </div>
 
@@ -9,7 +9,7 @@
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
-        <div class="form-inputs ">
+        <div class="form-inputs" style="padding-bottom: 22px">
           <%= f.input :email,
                       required: true,
                       autofocus: true,
@@ -27,9 +27,10 @@
           <%= f.button :submit, "Sign in", class: "btn btn-cyclee btn-cool"  %>
         </div>
       <% end %>
-    </div>
-    <div class="link-log">
+        <div class="link-log">
       <%= render "devise/shared/links" %>
     </div>
+    </div>
+
   </div>
 </div>
