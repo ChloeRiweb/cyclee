@@ -34,7 +34,7 @@
 //   top: 240px;
 //   left: 25px;
 //   input:last-child {
-//     margin-left: 30px;
+//    margin-left: 30px;
 //   }
 // }
 
@@ -43,9 +43,25 @@
   // border-radius: 10px 10px 0 0;
   h5 {
     color: $cyclee_blue_primary;
-    margin-left: 20px;
+  }
+  .btn-cyclee.btn-cool {
+    margin-left: 15px;
+  }
+
+  .modal-body {
+    p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
   }
 }
+
+
+  .modal-title {
+    margin-left: 20px;
+  }
 
 #new_danger {
   margin-left: 20px;
