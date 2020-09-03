@@ -1,4 +1,8 @@
 Hotspot.destroy_all
+Parking.destroy_all
+Danger.destroy_all
+Ride.destroy_all
+User.destroy_all
 
 filepath = 'db/scrape/parkings_spots.json'
 @parkings_all = JSON.parse(File.read(filepath))
@@ -49,16 +53,16 @@ filepath = 'db/scrape/show_danger.yaml'
 @dangers_list_data = YAML.load_file(filepath)
 
 @dangers_list = @dangers_list_data.map do |danger_list|
-  p danger_list
   {
     lat: danger_list[:latitude],
     lng: danger_list[:longitude],
     cat: danger_list[:category]
   }
 end
-
+user = User.create(email: "test@test.com", password: 123123)
+ride = Ride.create(user: user, origin_longitude: 2.377265, origin_latitude: 48.855393, destination_longitude: 2.362258, destination_latitude: 48.863521, destination_address: "28, rue de Rivoli, Paris France")
 @dangers_list.each do |danger_list|
-  Danger.create!(category: danger_list[:cat], latitude: danger_list[:lat], longitude: danger_list[:lng], ride_id: 1)
+  Danger.create!(category: danger_list[:cat], latitude: danger_list[:lat], longitude: danger_list[:lng], ride: ride)
 end
 
 
