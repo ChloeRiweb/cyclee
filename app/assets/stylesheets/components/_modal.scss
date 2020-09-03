@@ -1,31 +1,50 @@
-#modalDanger {
-  top: 175px;
-  left: 25px;
-}
-
-#modalHotspot {
-  top: 196px;
-  left: 25px;
-  ul {
-    list-style-type: none;
-    color: $cyclee_blue_primary;
+.modal {
+  padding: 16px;
+  align-items: flex-end;
+  &.show {
+    display: flex !important;
   }
-  li {
-    text-decoration: none;
+  .modal-dialog {
+    margin: 0;
+    width: 100%;
+  }
+  .modal-content {
+    border-radius: 20px;
   }
 }
 
-#modalParking {
-  top: 240px;
-  left: 25px;
-  input:last-child {
-    margin-left: 30px;
-  }
-}
+
+
+
+
+// #modalDanger {
+//   top: 175px;
+//   left: 25px;
+// }
+
+// #modalHotspot {
+//   top: 196px;
+//   left: 25px;
+//   ul {
+//     list-style-type: none;
+//     color: $cyclee_blue_primary;
+//   }
+//   li {
+//     text-decoration: none;
+//   }
+// }
+
+// #modalParking {
+//   top: 240px;
+//   left: 25px;
+//   input:last-child {
+//     margin-left: 30px;
+//   }
+// }
 
 .modal-content {
-  width: 85%;
-  border-radius: 10px 10px 0 0;
+  // width: 85%;
+  // border-radius: 10px 10px 0 0;
   h5 {
     color: $cyclee_blue_primary;
     margin-left: 20px;
@@ -45,7 +64,7 @@
     }
   }
   input:last-child {
-    margin-left: 12px;
+    margin: 12px auto;
   }
 }
 
@@ -59,21 +78,21 @@
 
 #danger_category_nid {
   margin-right: 10px;
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 #danger_category_barrees {
   margin-right: 10px;
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 #danger_category_travaux {
   margin-right: 10px;
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 .affiche {
-  margin-left: 35px;
+  // margin-left: 35px;
 }
 
 .AffiParking {
@@ -108,7 +127,8 @@
   background-image: asset-url('pothole.svg');
   height: 30px;
   width: 30px;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   margin-left: 10px;
 }
 
