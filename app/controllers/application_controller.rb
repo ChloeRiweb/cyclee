@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
       "longitude" => ride.destination_longitude
     }], mode, {
       geometries: "geojson",
-      alternatives: true
+      alternatives: true,
+      steps: true
     })
     return data
   end

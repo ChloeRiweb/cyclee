@@ -106,6 +106,14 @@
   margin: 10px 20px;
 }
 
+.AffiDirection {
+  background-image: asset-url('direction.png');
+  height: 30px;
+  width: 30px;
+  background-size: cover;
+  margin: 10px 20px;
+}
+
 .collection_radio_buttons {
   margin-left: 20px;
   color: $cyclee_blue_primary;

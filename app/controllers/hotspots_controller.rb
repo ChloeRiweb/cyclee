@@ -4,7 +4,7 @@ class HotspotsController < ApplicationController
   def parking
     @ride = Ride.find(params[:ride_id])
     @parking = Parking.new
-    
+
     @parkings = Hotspot.where(category: "parking").near([@ride.destination_latitude, @ride.destination_longitude], 0.5, units: :km)
 
     @parkings_markers = @parkings.map do |element|
@@ -14,7 +14,7 @@ class HotspotsController < ApplicationController
         category: element.category
       }
     end
-    
+
     @flag_marker = [{ lat: @ride.destination_latitude, lng: @ride.destination_longitude }]
     ride_infos
   end
@@ -51,15 +51,18 @@ class HotspotsController < ApplicationController
     if @ride.bike_friendly
       data = get_waypoints(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][1]['geometry']['coordinates']
+      @duration = (data[0]['routes'][1]['duration'] / 60).ceil
+      @distance = data[0]['routes'][1]['distance'] / 1000
       @color = '#ef596e'
+      @steps = data[0]['routes'][1]['legs'][0]['steps']
     else
       data = get_waypoints(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
+      @duration = (data[0]['routes'][0]['duration'] / 60).ceil
+      @distance = data[0]['routes'][0]['distance'] / 1000
       @color = '#193c60'
+      @steps = data[0]['routes'][0]['legs'][0]['steps']
     end
-    @duration = data[0]['routes'][0]['duration'] / 60
-    @distance = data[0]['routes'][0]['distance'] / 1000
-  end
 
   def set_ride
     @ride = Ride.find(params[:ride_id])

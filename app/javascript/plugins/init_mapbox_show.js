@@ -29,6 +29,8 @@ const initMapboxShow = () => {
     const zoom = mapElement.dataset.zoom ? mapElement.dataset.zoom : 13;
     const center = mapElement.dataset.center != "" ? JSON.parse(mapElement.dataset.center) : cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)];
     const rideColor = mapElement.dataset.color;
+    const steps = JSON.parse(mapElement.dataset.steps);
+    const instructions = document.getElementById('instructions');
 
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
@@ -77,6 +79,14 @@ const initMapboxShow = () => {
         }
       });
     });
+
+    if (steps) {
+      const tripInstructions = [];
+      for (let i = 0; i < steps.length; i++) {
+        tripInstructions.push('<li>' + steps[i]['maneuver']['instruction']) + '</li>';
+        instructions.innerHTML = tripInstructions;
+      }
+    }
 
     if (markersDanger) {
       markersDanger.forEach((markerDanger) => {
