@@ -34,6 +34,7 @@ import { dangerValidation } from '../components/danger_validation';
 import { initMapboxParkings } from '../plugins/init_mapbox_parkings';
 import { initMapboxPumps } from '../plugins/init_mapbox_pumps';
 import { initMapboxRepairers } from '../plugins/init_mapbox_repairers';
+import { closeModalHotspots } from '../plugins/close_modal_hotspots';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -56,4 +57,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapboxParkings();
   initMapboxPumps();
   initMapboxRepairers();
+  closeModalHotspots();
 });

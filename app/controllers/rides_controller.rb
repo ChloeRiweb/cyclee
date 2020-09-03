@@ -85,12 +85,14 @@ class RidesController < ApplicationController
       @duration = (data[0]['routes'][1]['duration'] / 60).ceil
       @distance = data[0]['routes'][1]['distance'] / 1000
       @color = '#ef596e'
+      @steps = data[0]['routes'][1]['legs'][0]['steps']
     else
       data = get_waypoints(@ride, 'cycling')
       @cycling_waypoints = data[0]['routes'][0]['geometry']['coordinates']
       @duration = (data[0]['routes'][0]['duration'] / 60).ceil
       @distance = data[0]['routes'][0]['distance'] / 1000
       @color = '#193c60'
+      @steps = data[0]['routes'][0]['legs'][0]['steps']
     end
 
   end
