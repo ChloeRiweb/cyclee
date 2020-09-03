@@ -40,19 +40,19 @@
         </button>
       </div>
       <div class="modal-body affiche">
-        <div id="post-content" class="d-flex align-items-center" data-toggle="modal" data-target="#modalInstructions">
+        <div id="post-content" class="d-flex align-items-center justify-content-start" data-toggle="modal" data-target="#modalInstructions">
           <div class="AffiDirection"></div>
           <p class="mb-0">Instructions</p>
         </div>
-        <%= link_to ride_parking_path(@ride), class: "d-flex align-items-center" do %>
+        <%= link_to ride_parking_path(@ride), class: "d-flex align-items-center justify-content-start" do %>
           <div class="AffiParking"></div>
           <p class="mb-0">Parkings</p>
         <% end %>
-        <%= link_to ride_pump_path(@ride), class: "d-flex align-items-center" do %>
+        <%= link_to ride_pump_path(@ride), class: "d-flex align-items-center justify-content-start" do %>
           <div class="AffiPump"></div>
           <p class="mb-0">Pompes</p>
         <% end %>
-        <%= link_to ride_repairer_path(@ride), class: "d-flex align-items-center" do %>
+        <%= link_to ride_repairer_path(@ride), class: "d-flex align-items-center justify-content-start" do %>
           <div class="AffiRepair"></div>
           <p class="mb-0">Réparateurs</p>
         <% end %>
