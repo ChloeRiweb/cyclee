@@ -32,10 +32,12 @@
   height: 30px;
   border-radius: 50%;
   cursor: pointer;
+  background-repeat: no-repeat;
 }
 .marker-barrees {
   background-image: url('route_barre.png');
   background-size: contain;
+  background-repeat: no-repeat;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -44,6 +46,7 @@
 .marker-travaux {
   background-image: url('cone.png');
   background-size: contain;
+  background-repeat: no-repeat;
   width: 30px;
   height: 30px;
   border-radius: 50%;
