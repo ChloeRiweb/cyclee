@@ -1,3 +1,18 @@
-.signup {
+body#sessions-new, body#registrations-new {
   background-color: white;
+  font-family: $poppins;
+ h2, a {
+    color: $cyclee_blue_primary;
+  }
+  .link-log {
+  padding-left: 21px;
+}
+}
+
+.d-flex {
+  justify-content: center;
+}
+
+.link-log {
+  padding-left: 21px;
 }
