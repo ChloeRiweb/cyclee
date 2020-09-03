@@ -134,7 +134,7 @@ const initMapboxEdit = () => {
         ele.className = 'marker-duration-alt';
         ele.innerHTML = `${durationAlt} min`;
         new mapboxgl.Marker(ele)
-          .setLngLat([ cyclingWaypointsAlt[Math.round(cyclingWaypoints.length / 2.0)][0], cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][1] ])
+          .setLngLat([ cyclingWaypointsAlt[Math.round(cyclingWaypoints.length / 3.0)][0], cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)][1] ])
           .addTo(map);
       };
 
