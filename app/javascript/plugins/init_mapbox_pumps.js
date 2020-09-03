@@ -2,6 +2,28 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 import { fitMapToMarkers, centerToPositionMarker } from './init_mapbox';
 
+const fitMapToMarkersAndCurrentPosition = (map, markers) => {
+  const geolocate = new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    fitBoundsOptions: {
+      linear: false
+    },
+    trackUserLocation: false
+  });
+  map.addControl(geolocate);
+  map.on('load', function() {
+    geolocate.trigger();
+  });
+  console.log("azeqfs")
+  geolocate.on('geolocate', function(e) {
+    const bounds = new mapboxgl.LngLatBounds();
+    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+    bounds.extend([e.coords.longitude, e.coords.latitude])
+    map.fitBounds(bounds, { padding: 80, maxZoom: 15, duration: 0 });
+  });
+};
 
 const initMapboxPumps = () => {
 
@@ -56,8 +78,8 @@ const initMapboxPumps = () => {
           .setLngLat([ pump.lng, pump.lat ])
           .addTo(map);
       });
-      fitMapToMarkers(map, pumps);
-      centerToPositionMarker(map);
+      fitMapToMarkersAndCurrentPosition(map, pumps);
+      // centerToPositionMarker(map);
     }
   }
  }
