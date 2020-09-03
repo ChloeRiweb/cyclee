@@ -2,6 +2,28 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 import { fitMapToMarkers, centerToPositionMarker } from './init_mapbox';
 
+const fitMapToMarkersAndCurrentPosition = (map, markers) => {
+  const geolocate = new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    fitBoundsOptions: {
+      linear: false
+    },
+    trackUserLocation: false
+  });
+  map.addControl(geolocate);
+  map.on('load', function() {
+    geolocate.trigger();
+  });
+  const closestRepairers = markers.slice(0, 2)
+  geolocate.on('geolocate', function(event) {
+    const bounds = new mapboxgl.LngLatBounds();
+    closestRepairers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+    bounds.extend([event.coords.longitude, event.coords.latitude])
+    map.fitBounds(bounds, { padding: 80, maxZoom: 15, duration: 0 });
+  });
+};
 
 const initMapboxRepairers = () => {
 
@@ -56,8 +78,8 @@ const initMapboxRepairers = () => {
           .setLngLat([ repairer.lng, repairer.lat ])
           .addTo(map);
       });
-      fitMapToMarkers(map, repairers);
-      centerToPositionMarker(map);
+      fitMapToMarkersAndCurrentPosition(map, repairers);
+      // centerToPositionMarker(map);
 
     }
   }
