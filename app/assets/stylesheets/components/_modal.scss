@@ -41,12 +41,13 @@
 .modal-content {
   // width: 85%;
   // border-radius: 10px 10px 0 0;
+  text-align: center;
   h5 {
     color: $cyclee_blue_primary;
   }
-  .btn-cyclee.btn-cool {
-    margin-left: 15px;
-  }
+  // .btn-cyclee.btn-cool {
+  //   margin-left: 15px;
+  // }
 
   .modal-body {
     p {
