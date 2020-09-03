@@ -17,7 +17,7 @@ const centerToPositionMarker = (map) => {
     fitBoundsOptions: {
       linear: false
     },
-    trackUserLocation: true
+    trackUserLocation: false
   });
   map.addControl(geolocate);
   map.on('load', function() {

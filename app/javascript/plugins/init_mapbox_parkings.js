@@ -49,7 +49,7 @@ const initMapboxParkings = () => {
         positionOptions: {
         enableHighAccuracy: true
         },
-        trackUserLocation: true
+        trackUserLocation: false
       })
     );
 
