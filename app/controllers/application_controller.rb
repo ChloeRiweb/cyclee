@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
     }], mode, {
       geometries: "geojson",
       alternatives: true,
-      steps: true
+      steps: true,
+      language: :fr
     })
     return data
   end
