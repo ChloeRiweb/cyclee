@@ -13,10 +13,6 @@
   }
 }
 
-
-
-
-
 // #modalDanger {
 //   top: 175px;
 //   left: 25px;
@@ -76,24 +72,15 @@
   margin: 0px;
 }
 
-#danger_category_nid {
+#danger_category_nid , #danger_category_barrees , #danger_category_travaux {
   margin-right: 10px;
-  margin-left: 20px;
+  background-color: $cyclee_purple;
 }
 
-#danger_category_barrees {
-  margin-right: 10px;
-  margin-left: 20px;
+[type="radio"]:checked + label {
+  color: $cyclee_purple;
 }
 
-#danger_category_travaux {
-  margin-right: 10px;
-  margin-left: 20px;
-}
-
-.affiche {
-  // margin-left: 35px;
-}
 
 .AffiParking {
   background-image: asset-url('parking.png');
