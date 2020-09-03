@@ -30,6 +30,7 @@ import { initMapboxShow } from '../plugins/init_mapbox_show';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initTimeOutHome } from '../plugins/init_timeouthome';
 import { searchValidation } from '../components/search_validation';
+import { dangerValidation } from '../components/danger_validation';
 import { initMapboxParkings } from '../plugins/init_mapbox_parkings';
 import { initMapboxPumps } from '../plugins/init_mapbox_pumps';
 import { initMapboxRepairers } from '../plugins/init_mapbox_repairers';
@@ -49,6 +50,9 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   initTimeOutHome();
   searchValidation();
+  if (document.querySelector("#new_danger")) {
+    dangerValidation();
+  }
   initMapboxParkings();
   initMapboxPumps();
   initMapboxRepairers();

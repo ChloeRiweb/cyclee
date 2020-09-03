@@ -3,13 +3,13 @@
 
   <% [["nid", "Nid de poule"], ["travaux", "Travaux"], ["barrees", "Routes barrées"]].each do |(value, label)| %>
     <div class="d-flex align-items-center mb-3">
-      <input type="radio" value="<%= value %>" name="danger[category]" id="danger_category_<%= value %>">
-      <label class="collection_radio_buttons" for="danger_category_<%= value %>"><%= label %></label>
+      <input type="radio" value="<%= value %>" name="danger[category]" id="danger_category_<%= value %>" class="d-none">
       <div class="danger-icon-<%= value %>"></div>
+      <label class="collection_radio_buttons" for="danger_category_<%= value %>"><%= label %></label>
     </div>
   <% end %>
   <%= f.input :latitude, as: :hidden %>
   <%= f.input :longitude, as: :hidden %>
-  <%= f.submit "Déclarer", class: "btn btn-cyclee btn-cool" %>
+  <%= f.submit "Déclarer", class: "btn btn-cyclee btn-cool d-none" %>
 <% end %>
 

@@ -1,31 +1,46 @@
-#modalDanger {
-  top: 175px;
-  left: 25px;
-}
-
-#modalHotspot {
-  top: 196px;
-  left: 25px;
-  ul {
-    list-style-type: none;
-    color: $cyclee_blue_primary;
+.modal {
+  padding: 16px;
+  align-items: flex-end;
+  &.show {
+    display: flex !important;
   }
-  li {
-    text-decoration: none;
+  .modal-dialog {
+    margin: 0;
+    width: 100%;
+  }
+  .modal-content {
+    border-radius: 20px;
   }
 }
 
-#modalParking {
-  top: 240px;
-  left: 25px;
-  input:last-child {
-    margin-left: 30px;
-  }
-}
+// #modalDanger {
+//   top: 175px;
+//   left: 25px;
+// }
+
+// #modalHotspot {
+//   top: 196px;
+//   left: 25px;
+//   ul {
+//     list-style-type: none;
+//     color: $cyclee_blue_primary;
+//   }
+//   li {
+//     text-decoration: none;
+//   }
+// }
+
+// #modalParking {
+//   top: 240px;
+//   left: 25px;
+//   input:last-child {
+//     margin-left: 30px;
+//   }
+// }
 
 .modal-content {
-  width: 85%;
-  border-radius: 10px 10px 0 0;
+  // width: 85%;
+  // border-radius: 10px 10px 0 0;
   h5 {
     color: $cyclee_blue_primary;
     margin-left: 20px;
@@ -45,7 +60,7 @@
     }
   }
   input:last-child {
-    margin-left: 12px;
+    margin: 12px auto;
   }
 }
 
@@ -57,24 +72,15 @@
   margin: 0px;
 }
 
-#danger_category_nid {
-  margin-right: 10px;
-  margin-left: 15px;
+
+#danger_category_nid , #danger_category_barrees , #danger_category_travaux {
+  background-color: $cyclee_purple;
 }
 
-#danger_category_barrees {
-  margin-right: 10px;
-  margin-left: 15px;
-}
+// [type="radio"]:checked label {
+//   text-decoration: underline;
+// }
 
-#danger_category_travaux {
-  margin-right: 10px;
-  margin-left: 15px;
-}
-
-.affiche {
-  margin-left: 35px;
-}
 
 .AffiParking {
   background-image: asset-url('parking.png');
@@ -101,15 +107,27 @@
 }
 
 .collection_radio_buttons {
-  margin: 0;
+  margin-left: 20px;
+  color: $cyclee_blue_primary;
+  &:label {
+    margin-bottom: 0;
+  }
 }
+
+label.collection_radio_buttons {
+  margin-bottom: 0;
+  &:active {
+    text-decoration: underline;
+  }
+}
+
 
 .danger-icon-nid {
   background-image: asset-url('pothole.svg');
   height: 30px;
   width: 30px;
-  background-size: cover;
-  margin-left: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .danger-icon-travaux {
@@ -117,7 +135,6 @@
   height: 30px;
   width: 30px;
   background-size: cover;
-  margin-left: 10px;
 }
 
 .danger-icon-barrees {
@@ -125,5 +142,4 @@
   height: 30px;
   width: 30px;
   background-size: cover;
-  margin-left: 10px;
 }
