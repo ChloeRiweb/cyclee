@@ -59,6 +59,7 @@ class RidesController < ApplicationController
       # { lat: @ride.origin_latitude, lng: @ride.origin_longitude, className: 'marker_origin' },
       { lat: @ride.destination_latitude, lng: @ride.destination_longitude, className: 'marker_show' }
     ]
+
     @danger = Danger.new
     @markers_danger = @ride.dangers.map do |danger|
       {
@@ -67,6 +68,16 @@ class RidesController < ApplicationController
         cat: danger.category
       }
     end
+
+    # afficher les danger sur la show
+    @markers_dangers_list = Ride.all.map(&:dangers).flatten.map do |danger_list|
+      {
+        lat: danger_list.latitude,
+        lng: danger_list.longitude,
+        cat: danger_list.category
+      }
+    end
+
     # @distance = Geocoder::Calculations.distance_between([@ride.origin_latitude,@ride.origin_longitude], [@ride.destination_latitude, @ride.destination_longitude])
     if @ride.bike_friendly
       data = get_waypoints(@ride, 'cycling')

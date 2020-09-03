@@ -42,3 +42,28 @@ end
 end
 
 puts "Parkings, pumps and repairers succesfully created!"
+
+
+# Pour afficher des dangers sur la show
+filepath = 'db/scrape/show_danger.yaml'
+@dangers_list_data = YAML.load_file(filepath)
+
+@dangers_list = @dangers_list_data.map do |danger_list|
+  p danger_list
+  {
+    lat: danger_list[:latitude],
+    lng: danger_list[:longitude],
+    cat: danger_list[:category]
+  }
+end
+
+@dangers_list.each do |danger_list|
+  Danger.create!(category: danger_list[:cat], latitude: danger_list[:lat], longitude: danger_list[:lng], ride_id: 1)
+end
+
+
+
+
+
+
+

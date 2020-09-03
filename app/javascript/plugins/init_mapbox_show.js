@@ -26,6 +26,7 @@ const initMapboxShow = () => {
 
     const cyclingWaypoints = JSON.parse(mapElement.dataset.cyclingWaypoints);
     const markersDanger = JSON.parse(mapElement.dataset.markersDanger);
+    const markersDangersList = JSON.parse(mapElement.dataset.markersDangersList);
     const zoom = mapElement.dataset.zoom ? mapElement.dataset.zoom : 13;
     const center = mapElement.dataset.center != "" ? JSON.parse(mapElement.dataset.center) : cyclingWaypoints[Math.round(cyclingWaypoints.length / 2.0)];
     const rideColor = mapElement.dataset.color;
@@ -80,6 +81,15 @@ const initMapboxShow = () => {
 
     if (markersDanger) {
       markersDanger.forEach((markerDanger) => {
+        const el = document.createElement('div');
+        el.className = `marker-${markerDanger.cat}`;
+        new mapboxgl.Marker(el, {offset: [20, 20]})
+          .setLngLat([ markerDanger.lng, markerDanger.lat ])
+          .addTo(map);
+      });
+    }
+    if (markersDangersList) {
+      markersDangersList.forEach((markerDanger) => {
         const el = document.createElement('div');
         el.className = `marker-${markerDanger.cat}`;
         new mapboxgl.Marker(el, {offset: [20, 20]})
